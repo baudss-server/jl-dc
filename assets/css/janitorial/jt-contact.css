@@ -1,0 +1,6 @@
+/* same form dimensions as VA */
+#contact .contact-form{
+  max-width: 560px; margin: 0 auto; padding: 20px;
+  display: grid; gap: 12px;
+}
+#contact .btn{ width: 100%; }

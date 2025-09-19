@@ -1,0 +1,10 @@
+/* about section — plain solid card like VA */
+#about .about-intro{ align-items:stretch; }
+#about .about-card{ padding:20px; }
+#about .about-media{
+  min-height:140px;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: var(--radius);
+}
+@media (max-width:640px){ #about .about-media{ min-height:120px; } }

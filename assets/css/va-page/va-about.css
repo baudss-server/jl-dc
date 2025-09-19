@@ -1,0 +1,61 @@
+/*
+ * va-about.css
+ * Styles for the About Us section of the VA page
+*/
+
+#va-about .about-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+#va-about .about-content {
+    flex: 1;
+    text-align: left;
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+#va-about .about-content p {
+    margin-bottom: 20px;
+}
+
+#va-about .about-image {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#va-about .placeholder-img {
+    width: 100%;
+    padding-bottom: 56.25%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    #va-about .about-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    #va-about .about-image {
+        max-width: 80%;
+        margin-top: 20px;
+    }
+}

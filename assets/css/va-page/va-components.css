@@ -1,0 +1,181 @@
+/*
+ * va-components.css
+ * Styles specifically for the Virtual Assistant Services page
+*/
+
+/* Style for the back arrow in the VA page navbar */
+.back-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    color: var(--highlight-color);
+    font-size: 1.5em; /* Mas malaking arrow */
+    transition: transform 0.3s ease, color 0.3s ease;
+    padding: 0;
+}
+
+.back-arrow:hover {
+    color: #fff; /* White sa hover */
+    transform: scale(1.1); /* Lumalaki nang kaunti sa hover */
+}
+
+/* Siguraduhin na ang parent list item ay nakikita */
+.nav-links li.nav-back-button {
+    display: block !important;
+}
+
+/* Para sa consistent na padding at margin ng bawat section */
+.page-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Para sa responsive na layout ng back arrow sa mobile */
+@media (max-width: 768px) {
+    .nav-links li.nav-back-button {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+}
+
+/* --- New styles for VA sections --- */
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 4em;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #ffffff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Introduction Section - Our Virtual Assistance Services */
+#va-intro {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#va-intro .pro-provider-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+#va-intro .content-text {
+    flex: 1;
+}
+
+#va-intro .content-img {
+    flex: 1;
+    max-width: 50%;
+}
+
+#va-intro .content-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.checkmark-list {
+    list-style: none;
+    padding: 0;
+}
+
+.checkmark-list li {
+    margin-bottom: 15px;
+    color: #f5f5f5;
+}
+
+/* Services List Section - What We Can Do */
+#va-services-list {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#va-services-list .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ffd700;
+}
+
+.service-card h3 {
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #ccc;
+}
+
+.service-card .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background-color: #ffd700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.service-card .icon-wrapper i {
+    font-size: 1.8em;
+    color: #1a1a1a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    #va-intro .pro-provider-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #va-intro .content-img {
+        max-width: 80%;
+    }
+}

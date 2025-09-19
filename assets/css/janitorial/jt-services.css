@@ -1,0 +1,22 @@
+/* big list + capability cards — plain dark */
+
+.services-list{ padding:18px; background: var(--card-bg) !important; border:1px solid var(--card-border) !important; border-radius:var(--radius); }
+.services-list .bullets{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+.services-list .bullets li{ display:grid; grid-template-columns:32px 1fr; gap:10px; align-items:start; }
+
+.services-list .bicon{
+  width:32px; height:32px; border-radius:10px; display:grid; place-items:center; font-size:18px;
+  background:#1b1b1b; border:1px solid rgba(255,255,255,.18);
+}
+
+.cap-grid{ align-items:stretch; }
+.cap{
+  padding:18px; background: var(--card-bg) !important; border:1px solid var(--card-border) !important; border-radius:var(--radius);
+  display:flex; flex-direction:column; gap:8px; text-align:left; min-height:150px;
+}
+.cap h3{ margin:0; font-size:1.02rem; }
+.cap p{ margin:0; color:var(--muted); }
+.cap-ico{
+  width:40px; height:40px; border-radius:12px; display:grid; place-items:center; font-size:22px;
+  background:#1b1b1b; border:1px solid rgba(255,255,255,.18);
+}

@@ -1,0 +1,144 @@
+/*
+ * mobile-view.css
+ * Lahat ng styles para sa mobile (max-width: 768px)
+*/
+
+@media (max-width: 768px) {
+    /* Pangkalahatang adjustments para sa lahat ng sections */
+    .page-section, .footer {
+        padding: 40px 15px;
+    }
+    
+    .section-title {
+        font-size: 2em;
+    }
+    
+    /* Header Styles at Sidebar Navigation */
+    .header nav {
+        flex-direction: row; /* Panatilihin ang row direction para sa logo at menu icon */
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+    }
+    
+    .menu-toggle {
+        display: flex; /* Siguraduhin na visible ang menu icon */
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none; /* Itago ang menu by default */
+        flex-direction: column;
+        width: 100%;
+        background-color: #111;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+        border-top: 1px solid var(--highlight-color);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex; /* Ipakita ang menu kapag may "active" class */
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    /* Hero Section Styles */
+    .hero-section .container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0 15px;
+        gap: 20px;
+    }
+    
+    .hero-section .container .card {
+        width: 100%;
+        max-width: 350px; /* Dagdag na max-width para sa cards */
+    }
+    
+    /* Services Section Styles */
+    .container-services {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .service-card-main {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    /* Pro Provider (About Us) Styles */
+    .pro-provider-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .pro-provider-image {
+        width: 100%;
+        max-width: 450px;
+    }
+    
+    /* How It Works Styles */
+    .how-it-works-section .steps-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .how-it-works-section .step-card {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    /* Contact Styles */
+    .contacts-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-details,
+    .contact-form-container {
+        width: 100%;
+    }
+
+    /* Footer Styles */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-column {
+        width: 100%;
+        min-width: unset;
+        margin-bottom: 20px;
+    }
+    
+    .footer-column:last-child {
+        margin-bottom: 0;
+    }
+
+    .footer-column ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column ul li {
+        text-align: center;
+    }
+
+    .footer-column .footer-about-text {
+        text-align: center;
+    }
+}

@@ -1,0 +1,64 @@
+.how-it-works-section {
+    /* Tinanggal ang background-color para makita ang star animation */
+    background: transparent;
+    backdrop-filter: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px 20px;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.step-card {
+    background-color: #111;
+    padding: 40px;
+    border-radius: 8px;
+    width: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-grow: 1;
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px var(--highlight-color), 0 0 30px var(--highlight-color);
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--highlight-color);
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: #333;
+    font-weight: bold;
+}
+
+.step-title {
+    color: var(--text-color);
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.step-card p {
+    color: var(--secondary-text-color);
+    font-size: 0.9em;
+}
+

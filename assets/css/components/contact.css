@@ -1,0 +1,96 @@
+/* contact.css */
+
+.contacts-section {
+    /* Inalis ang background-color para maging transparent */
+    padding: 80px 20px;
+    border-top: 1px solid #222;
+}
+
+.contacts-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.contact-details {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-details p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: var(--secondary-text-color);
+}
+
+.contact-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-details li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.contact-icon {
+    font-size: 1.5em;
+    color: var(--highlight-color);
+    margin-right: 15px;
+}
+
+.contact-details a {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: var(--highlight-color);
+}
+
+.contact-form-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.form-title {
+    color: var(--highlight-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: var(--text-color);
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--secondary-text-color);
+}
+
+.map-container {
+    margin-top: 50px;
+    width: 100%;
+    height: 400px;
+    background-color: #222;
+    border-radius: 8px;
+}

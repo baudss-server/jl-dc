@@ -1,0 +1,93 @@
+/* ================================
+   ABOUT (merged with former pro-provider)
+   ================================ */
+
+/* Section-level polish for #about-us */
+#about-us {
+  background: #0a0a0a;
+  color: #eaeaea;
+  padding: 60px 0;
+}
+#about-us .section-title {
+  color: var(--highlight-color, #FFD700);
+  margin-bottom: 18px;
+}
+
+/* Glass card look kung gumagamit ka ng .pro-provider-section sa HTML */
+.pro-provider-section {
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 30px rgba(0,0,0,.12);
+  margin-bottom: 20px;
+  padding: 32px;
+}
+
+/* Main container / layout */
+.pro-provider-container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* text | image */
+  gap: 28px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text column */
+.content-text {
+  min-width: 280px;
+}
+.content-text h3 {
+  margin: 0 0 10px;
+  font-weight: 600;
+  color: var(--text-color, #fff);
+}
+.content-text p {
+  font-size: 1em;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  color: var(--secondary-text-color, #cfcfcf);
+}
+
+/* Image column wrapper */
+.content-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.45);
+}
+
+/* CRITICAL FIX: cap the image height (no more super tall) */
+#about-us .pro-provider-section .content-img img,
+#about-us .content-img img {
+  width: 100%;
+  height: clamp(220px, 48vw, 460px) !important; /* <= adjust mo kung gusto mong mas mababa/mas mataas */
+  max-height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Optional list styles kung meron */
+.checkmark-list { list-style: none; padding: 0; margin-top: 20px; }
+.checkmark-list li { margin-bottom: 10px; font-weight: 500; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  #about-us { padding: 40px 0; }
+  .pro-provider-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+/* Glass card — no gray tint */
+#about-us .pro-provider-section {
+  background: transparent !important;                 /* tanggal ang gray */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.18);           /* subtle border */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.22);            /* soft outer shadow */
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gaming Headset
+* source:	https://sketchfab.com/3d-models/gaming-headset-8a8ea478c4ec40bfad58f9e214177bdc
+* author:	YarikLegendary (https://sketchfab.com/YarikLegendary)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gaming Headset" (https://sketchfab.com/3d-models/gaming-headset-8a8ea478c4ec40bfad58f9e214177bdc) by YarikLegendary (https://sketchfab.com/YarikLegendary) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+  <title>Delacruzph — Janitorial Services</title>
+
+  <!-- Global (starfield, resets, shared tokens) -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <!-- Janitorial bundle -->
+  <link rel="stylesheet" href="../assets/css/janitorial/jt-base.css" />
+  <link rel="stylesheet" href="../assets/css/janitorial/jt-header.css" />
+  <link rel="stylesheet" href="../assets/css/janitorial/jt-hero-section.css" />
+  <link rel="stylesheet" href="../assets/css/janitorial/jt-about.css" />
+  <link rel="stylesheet" href="../assets/css/janitorial/jt-services.css" />
+  <link rel="stylesheet" href="../assets/css/janitorial/jt-contact.css" />
+  <link rel="stylesheet" href="../assets/css/janitorial/jt-footer.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- === HARD OVERRIDE: remove ALL blur site-wide === -->
+  <style id="no-blur-overrides">
+    *, *::before, *::after{
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+      filter: none !important;
+    }
+    /* keep hero text glow (it's text-shadow, not blur) */
+    .hero-text h1{ filter: none !important; }
+  </style>
+</head>
+<body>
+  <!-- starfield (same across pages) -->
+  <div class="background-stars" aria-hidden="true">
+    <div id="stars"></div><div id="stars2"></div><div id="stars3"></div>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <nav class="nav" aria-label="Primary">
+      <a href="../index.html" class="logo" aria-label="Delacruzph. Corporation Logo"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#svc">Services</a></li>
+        <li><a href="#contact">Contacts</a></li>
+        <li class="nav-back-button"><a href="../index.html" class="btn btn-primary" data-transition="wipe-right"><i class="fas fa-arrow-left"></i> Back</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Main ===== -->
+  <main>
+    <!-- ===== Hero ===== -->
+    <section id="janitorial-hero" class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-text" data-animate="fade">
+        <div class="hero-title">
+          <h1 id="hero-title">JANITORIAL</h1>
+          <img src="../assets/images/broom.png" alt="" class="broom" aria-hidden="true" />
+        </div>
+        <h2>SERVICES</h2>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="page-section" aria-labelledby="about-title" data-animate-group>
+      <h2 id="about-title" class="section-title" data-animate="fade">
+        ABOUT OUR JANITORIAL COMPANY
+      </h2>
+
+      <div class="about-intro grid grid-2">
+        <div class="about-card card card-hover" data-animate>
+          <p class="muted">
+            We don’t just provide cleaning services—we cheerfully deliver our best. Your
+            business has different needs every day, so you only pay for the actual number
+            of work hours. No fixed blocks, no wasted time.
+          </p>
+          <p class="muted" style="margin-top:.5rem">
+            From daily office upkeep to deep cleaning and floor care, we tailor every plan
+            to the space and schedule you prefer.
+          </p>
+        </div>
+
+        <aside class="about-media card" data-animate aria-label="Janitorial preview"></aside>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES (big list like VA) ===== -->
+    <section id="svc" class="page-section" aria-labelledby="services-title" data-animate-group>
+      <h2 id="services-title" class="section-title" data-animate="fade">
+        OUR JANITORIAL SERVICES
+      </h2>
+
+      <article class="services-list card" data-animate>
+        <ul class="bullets">
+          <li>
+            <span class="bicon"><i class="ri-building-2-line"></i></span>
+            <div><strong>Regular Office Cleaning</strong> — dusting, sweeping, mopping, garbage
+              collection, and disinfection of shared areas.</div>
+          </li>
+          <li>
+            <span class="bicon"><i class="ri-sparkling-line"></i></span>
+            <div><strong>Deep Cleaning</strong> — intensive sanitation for high-traffic zones,
+              restrooms, and hard-to-reach surfaces.</div>
+          </li>
+          <li>
+            <span class="bicon"><i class="ri-grid-line"></i></span>
+            <div><strong>Floor Care</strong> — scrubbing, polishing, and waxing to keep floors
+              looking new.</div>
+          </li>
+          <li>
+            <span class="bicon"><i class="ri-brush-2-line"></i></span>
+            <div><strong>Interior &amp; Exterior</strong> — glass partitions, windows, storefronts,
+              and exterior touchpoints.</div>
+          </li>
+          <li>
+            <span class="bicon"><i class="ri-leaf-line"></i></span>
+            <div><strong>Eco-friendly Options</strong> — green products upon request for a safer
+              workspace.</div>
+          </li>
+          <li>
+            <span class="bicon"><i class="ri-time-line"></i></span>
+            <div><strong>Flexible Scheduling</strong> — pay only for actual work hours, no hidden fees.</div>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ===== WHAT WE CAN DO (4 small cards like VA) ===== -->
+    <section class="page-section" aria-labelledby="cap-title" data-animate-group>
+      <h2 id="cap-title" class="section-title" data-animate="fade">
+        WHAT WE CAN DO
+      </h2>
+
+      <div class="cap-grid grid grid-3">
+        <div class="cap card card-hover" data-animate>
+          <div class="cap-ico"><i class="ri-calendar-line" aria-hidden="true"></i></div>
+          <h3>Email &amp; Calendar</h3>
+          <p class="muted">Schedule coordination with building admins &amp; tenants.</p>
+        </div>
+        <div class="cap card card-hover" data-animate>
+          <div class="cap-ico"><i class="ri-customer-service-2-line"></i></div>
+          <h3>Customer Support</h3>
+          <p class="muted">Issue logging &amp; quick dispatch for onsite teams.</p>
+        </div>
+        <div class="cap card card-hover" data-animate>
+          <div class="cap-ico"><i class="ri-check-double-line"></i></div>
+          <h3>Reports &amp; Inspections</h3>
+          <p class="muted">Photo reports, checklists, and QC visits.</p>
+        </div>
+        <div class="cap card card-hover" data-animate>
+          <div class="cap-ico"><i class="ri-file-list-3-line"></i></div>
+          <h3>Documents</h3>
+          <p class="muted">SOW, SLAs, and permits organized &amp; updated.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="page-section" aria-labelledby="contact-title" data-animate-group>
+      <h2 id="contact-title" class="section-title" data-animate="fade">
+        WORK WITH US
+      </h2>
+
+      <form class="contact-form card" action="#" method="post" data-animate>
+        <label><span>Your Name</span><input type="text" name="name" placeholder="Enter your name" required /></label>
+        <label><span>Your Email</span><input type="email" name="email" placeholder="Enter your email" required /></label>
+        <label><span>Your Message</span><textarea name="message" placeholder="Tell us about your cleaning needs" rows="5" required></textarea></label>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-top grid grid-2">
+      <div class="footer-col card" data-animate>
+        <h4>Get in Touch</h4>
+        <p>Unit 123, Sample Road Street, XYZ City</p>
+        <p>(+63) 900 000 0000</p>
+        <p>hello@delacruzph.com</p>
+      </div>
+      <div class="footer-col card" data-animate>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#svc">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 Delacruzph Corporation. All Rights Reserved.</p></div>
+  </footer>
+
+  <!-- stable mobile 100vh -->
+  <script>
+    const setVH=()=>document.documentElement.style.setProperty('--vh',(window.innerHeight*0.01)+'px');
+    window.addEventListener('resize',setVH,{passive:true}); setVH();
+  </script>
+
+  <!-- Scroll: Play/Reverse (both directions) -->
+  <script>
+    (function(){
+      const groups=document.querySelectorAll('[data-animate-group]');
+      groups.forEach(g=>{
+        const items=[...g.querySelectorAll('[data-animate]')];
+        items.forEach((el,i)=>el.style.setProperty('--stagger',(i*90)+'ms'));
+      });
+      const io=new IntersectionObserver((ents)=>{
+        ents.forEach(e=>{
+          if(e.isIntersecting){ e.target.classList.add('in-view'); }
+          else{ e.target.classList.remove('in-view'); }
+        });
+      },{threshold:.18, rootMargin:"0px 0px -10% 0px"});
+      document.querySelectorAll('[data-animate], .section-title').forEach(el=>io.observe(el));
+    })();
+  </script>
+</body>
+</html>
