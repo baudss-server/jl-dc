@@ -1,97 +1,192 @@
-/* jt-hero-section.css — continuous broom + glow-only shine on "JANITORIAL" */
-
-.hero-section{
+/* ===== JANITORIAL HERO (centered, full viewport height, VH-scaled) ===== */
+.jt-page .jt-hero{
   position: relative;
-  height: calc(var(--vh, 1vh) * 100);
-  display: flex; align-items: center; justify-content: center;
-  text-align: center; color: #fff; overflow: hidden;
-  background: transparent;
+  min-height: calc(var(--vh, 1vh) * 100);
+  padding-block: clamp(24px, 4vh, 48px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-.hero-text{
-  position: relative; z-index: 10; padding: 0 1rem;
-  text-shadow: 0 2px 12px rgba(0,0,0,.45);
+/* center container */
+.jt-page .jt-hero-center{
+  position: relative;
+  z-index: 3;
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 1.5vh, 18px);
+  text-align: center;
 }
 
-/* H1: glow-only (no streak), timed near the broom “cleaning” pass */
-.hero-text h1{
+/* row: broom + title */
+.jt-page .jt-hero-row{
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(12px, 1.6vh, 22px);
+}
+
+/* broom */
+.jt-page .jt-broom{
+  width: clamp(58px, 8vh, 100px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,.55));
+  transform-origin: 50% 50%;
   position: relative;
+  z-index: 5;
+  pointer-events: none;
+  --parkX: 0px;
+  --parkY: 0px;
+}
+.jt-page .jt-broom.idle-float{
+  animation: jtFloat 5.4s ease-in-out infinite;
+}
+
+/* title + inner (for gradient & sweep/shine overlays) */
+.jt-page .jt-title{
   margin: 0;
-  font-size: clamp(2.2rem, 6vw + .5rem, 5rem);
-  font-weight: 800; letter-spacing: .12em;
-  color: #FFD700;
-
-  --shine-delay: 4.5s; /* ~80% of desktop broom duration (5.6s) */
-  animation: text-glow 1.2s ease-out var(--shine-delay) both;
+  line-height: 1.02;
+  font-weight: 800;
+  font-size: clamp(36px, 8vh, 96px);
+  letter-spacing: .25em;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
 }
-@keyframes text-glow{
-  0%   { text-shadow: 0 2px 12px rgba(0,0,0,.45); }
-  45%  { text-shadow: 0 3px 18px rgba(255,215,0,.55), 0 0 24px rgba(255,255,255,.25); }
-  100% { text-shadow: 0 2px 12px rgba(0,0,0,.45); }
-}
-
-.hero-text h2{
-  margin: .25rem 0 0;
-  font-size: clamp(1rem, 2vw + .75rem, 2rem);
-  font-weight: 400; letter-spacing: .4em; color: #fff;
+.jt-page .jt-title-inner{
+  background: linear-gradient(90deg,#fff,#ffd84d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* space for the parked broom beside the “J” */
-.hero-title{
-  position: relative; display: inline-flex; align-items: flex-end;
-  padding-left: clamp(18px, 4.5vw, 56px);
-  padding-bottom: clamp(6px, 1vw, 10px);
+/* subtitle */
+.jt-page .jt-subtitle{
+  margin: 0;
+  color: #eaeaea;
+  font-weight: 600;
+  letter-spacing: .55em;
+  font-size: clamp(12px, 2.2vh, 22px);
+  opacity: .9;
 }
 
-/* Broom with continuous linear path (no waypoint slowdowns) */
-.broom{
-  position: absolute; left: 0; bottom: -2px;
-  width: clamp(56px, 7.5vw, 110px);
-  filter: drop-shadow(0 8px 16px rgba(0,0,0,.45));
-  pointer-events: none; z-index: 12;
-
-  animation: broom-loop-park-linear 5.6s linear .05s both;
-  will-change: transform;
+/* ===== TEXT SWEEP OVERLAY ===== */
+.jt-page .jt-title::after{
+  content:"";
+  position:absolute;
+  inset: 0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      rgba(255,216,77,0) 0%,
+      rgba(255,216,77,.25) 20%,
+      rgba(255,216,77,.55) 50%,
+      rgba(255,216,77,.25) 80%,
+      rgba(255,216,77,0) 100%);
+  transform: translateX(110%);
+  opacity: 0;
 }
-@keyframes broom-loop-park-linear{
-  0%   { transform: translate(120vw, -34vh) rotate(36deg)  scale(.96); opacity:0; }
-  10%  { transform: translate(70vw,   -8vh) rotate(26deg)  scale(.98); opacity:1; }
-  20%  { transform: translate(30vw,    12vh) rotate(12deg) scale(1); }
-  30%  { transform: translate(-10vw,   -8vh) rotate(2deg)   scale(1); }
-  40%  { transform: translate(20vw,     6vh) rotate(16deg)  scale(1); }
-  50%  { transform: translate(38vw,    -4vh) rotate(22deg)  scale(1); }
-  60%  { transform: translate(10vw,   -10vh) rotate(8deg)   scale(1); }
-  70%  { transform: translate(4vw,     -8vh) rotate(4deg)   scale(1); }
-  80%  { transform: translate(-6%,      1.2vh) rotate(-24deg) scale(1); }
-  90%  { transform: translate(-40%,      .6vh) rotate(-21deg)  scale(1); }
-  98%  { transform: translate(-101%,      .2vh) rotate(-19deg)  scale(1); }
-  100% { transform: translate(-103%,      0)    rotate(-18deg)  scale(1); }
+.jt-page .jt-title.sweep-run::after{
+  /* synced sa JS via CSS vars */
+  animation: jtTextSweep var(--jtSweepDur, 2.6s) var(--jtSweepEase, ease-in-out) forwards;
+  opacity: 1;
+}
+@keyframes jtTextSweep{
+  0%   { transform: translateX(110%); opacity: .0 }
+  10%  { opacity: .85 }
+  50%  { opacity: 1 }
+  100% { transform: translateX(-10%); opacity: .0 }
 }
 
-/* Mobile tuning */
-@media (max-width: 480px){
-  .hero-title{ padding-left: clamp(16px, 7vw, 48px); }
+/* Shine after sweep (one-time) */
+.jt-page .jt-title-inner.shine-once,
+.jt-page .jt-subtitle.shine-once{
+  background: linear-gradient(90deg,#ffffff 0%,#ffd84d 20%,#fff4b3 35%,#ffffff 55%,#ffd84d 75%,#ffffff 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255,216,77,.35);
+  animation: dcpShineSweep 1.6s ease-in-out forwards;
+}
+@keyframes dcpShineSweep{
+  0%   { background-position: 120% 0; opacity: .95 }
+  60%  { background-position: 0% 0;   opacity: 1 }
+  100% { background-position: 0% 0;   opacity: 1 }
+}
 
-  .hero-text h1{ --shine-delay: 3.6s; } /* 80% of 4.6s */
+/* gold sweep bg hidden */
+.jt-page .jt-gold-sweep{ display: none !important; }
 
-  .broom{
-    width: clamp(48px, 14vw, 96px);
-    animation: broom-loop-park-linear-m 4.6s linear .05s both;
+/* Idle float keeps parked X/Y */
+@keyframes jtFloat{
+  0%,100%{ transform: translate(var(--parkX), calc(var(--parkY) + 0px)) }
+  50%    { transform: translate(var(--parkX), calc(var(--parkY) - 6px)) }
+}
+
+/* background stars layer */
+.stars-wrap{ z-index:-1 }
+
+/* ======== MOBILE TWEAKS ======== */
+@media (max-width: 600px){
+  .jt-page .jt-hero-center{ width: min(100%, 94vw); padding-inline: 6px; }
+  .jt-page .jt-hero-row{ gap: 10px; }
+  .jt-page .jt-broom{ width: clamp(44px, 7vh, 78px); }
+  .jt-page .jt-title{
+    white-space: normal;
+    letter-spacing: .16em;
+    font-size: clamp(28px, 7.2vh, 64px);
   }
-  @keyframes broom-loop-park-linear-m{
-    0%   { transform: translate(110vw, -28vh) rotate(30deg)  scale(.95); opacity:0; }
-    12%  { transform: translate(64vw,   -6vh) rotate(22deg)  scale(.97); opacity:1; }
-    24%  { transform: translate(22vw,    9vh) rotate(10deg)  scale(1); }
-    36%  { transform: translate(-12vw,  -6vh) rotate(2deg)   scale(1); }
-    52%  { transform: translate(26vw,     4vh) rotate(16deg) scale(1); }
-    68%  { transform: translate(8vw,     -7vh) rotate(6deg)  scale(1); }
-    84%  { transform: translate(-6%,       1vh) rotate(-22deg) scale(1); }
-    100% { transform: translate(-105%,      0)  rotate(-16deg) scale(1); }
+  .jt-page .jt-subtitle{
+    letter-spacing: .38em;
+    font-size: clamp(11px, 2vh, 16px);
   }
 }
 
-/* Reduced motion */
+@media (max-width: 400px){
+  .jt-page .jt-hero-row{ gap: 8px; }
+  .jt-page .jt-broom{ width: clamp(40px, 6.6vh, 72px); }
+  .jt-page .jt-title{
+    letter-spacing: .12em;
+    font-size: clamp(24px, 6.6vh, 56px);
+  }
+  .jt-page .jt-subtitle{
+    letter-spacing: .32em;
+    font-size: clamp(10px, 1.8vh, 15px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce){
-  .broom{ animation: none; }
-  .hero-text h1{ animation: none; }
+  .jt-page .jt-broom{ animation: none !important; }
+}
+
+/* extra mobile-only fit */
+@media (max-width: 600px){
+  .jt-page .jt-hero{
+    min-height: auto;
+    padding-block: 40px max(24px, env(safe-area-inset-bottom));
+  }
+  .jt-page .jt-broom{ width: clamp(34px, 12vw, 56px); }
+  .jt-page .jt-title{
+    font-size: clamp(22px, 9.2vw, 40px);
+    letter-spacing: .10em;
+    line-height: 1.05;
+  }
+  .jt-page .jt-subtitle{
+    font-size: clamp(10px, 3.6vw, 14px);
+    letter-spacing: .28em;
+  }
+}
+
+@media (max-width: 380px){
+  .jt-page .jt-hero-row{ gap: 8px; flex-wrap: wrap; }
+  .jt-page .jt-broom{ order: -1; width: clamp(30px, 14vw, 48px); }
+  .jt-page .jt-title{
+    font-size: clamp(20px, 10vw, 34px);
+    letter-spacing: .06em;
+  }
 }

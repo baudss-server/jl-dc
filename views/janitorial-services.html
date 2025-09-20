@@ -3,220 +3,210 @@
 <head>
   <meta charset="UTF-8" />
   <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
-  <title>Delacruzph — Janitorial Services</title>
+  <title>DelaCruzPH — Janitorial Services</title>
 
-  <!-- Global (starfield, resets, shared tokens) -->
+  <!-- Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- SHARED (same as main/VA) -->
   <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components/header.css" />
+  <link rel="stylesheet" href="../assets/css/components/contact.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
 
-  <!-- Janitorial bundle -->
+  <!-- JANITORIAL (scoped) -->
   <link rel="stylesheet" href="../assets/css/janitorial/jt-base.css" />
-  <link rel="stylesheet" href="../assets/css/janitorial/jt-header.css" />
   <link rel="stylesheet" href="../assets/css/janitorial/jt-hero-section.css" />
   <link rel="stylesheet" href="../assets/css/janitorial/jt-about.css" />
   <link rel="stylesheet" href="../assets/css/janitorial/jt-services.css" />
   <link rel="stylesheet" href="../assets/css/janitorial/jt-contact.css" />
   <link rel="stylesheet" href="../assets/css/janitorial/jt-footer.css" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-
-  <!-- === HARD OVERRIDE: remove ALL blur site-wide === -->
-  <style id="no-blur-overrides">
-    *, *::before, *::after{
-      -webkit-backdrop-filter: none !important;
-      backdrop-filter: none !important;
-      filter: none !important;
-    }
-    /* keep hero text glow (it's text-shadow, not blur) */
-    .hero-text h1{ filter: none !important; }
-  </style>
+  <noscript><style>.page-wipe{display:none!important}</style></noscript>
 </head>
-<body>
-  <!-- starfield (same across pages) -->
-  <div class="background-stars" aria-hidden="true">
+<body class="jt-page">
+  <!-- Starfield BG -->
+  <div class="stars-wrap" aria-hidden="true">
     <div id="stars"></div><div id="stars2"></div><div id="stars3"></div>
   </div>
 
-  <!-- ===== Header ===== -->
-  <header class="header">
-    <nav class="nav" aria-label="Primary">
-      <a href="../index.html" class="logo" aria-label="Delacruzph. Corporation Logo"></a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#svc">Services</a></li>
-        <li><a href="#contact">Contacts</a></li>
-        <li class="nav-back-button"><a href="../index.html" class="btn btn-primary" data-transition="wipe-right"><i class="fas fa-arrow-left"></i> Back</a></li>
-      </ul>
-    </nav>
+  <!-- HEADER / NAV -->
+  <header class="dcp-header">
+    <div class="dcp-header-container">
+      <a href="#jt-hero" class="dcp-brand" aria-label="DelaCruzPH Corporation">
+        <img class="brand-logo" src="../assets/images/delacruzph.corporation copy1.png" alt="DelaCruzPH Corporation" />
+      </a>
+      <nav class="dcp-nav">
+        <a href="#jt-hero">Home</a>
+        <a href="#jt-services">Services</a>
+        <a href="#jt-about">About</a>
+        <a href="#jt-contact">Contact</a>
+        <a href="va-services.html" data-wipe>VA Service</a>
+        <a href="../index.html" data-wipe="right">Main Page</a>
+      </nav>
+      <button class="dcp-burger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+    </div>
   </header>
 
-  <!-- ===== Main ===== -->
   <main>
-    <!-- ===== Hero ===== -->
-    <section id="janitorial-hero" class="hero-section" aria-labelledby="hero-title">
-      <div class="hero-text" data-animate="fade">
-        <div class="hero-title">
-          <h1 id="hero-title">JANITORIAL</h1>
-          <img src="../assets/images/broom.png" alt="" class="broom" aria-hidden="true" />
+    <!-- ===== HERO (broom sweeps the text, then parks left) ===== -->
+    <section id="jt-hero" class="jt-hero page-section">
+      <div class="container jt-hero-center">
+        <div class="jt-hero-row">
+          <img class="jt-broom" src="../assets/images/broom.png" alt="">
+          <!-- wrapped for sweep/shine effects -->
+          <h1 class="jt-title">
+            <span class="jt-title-inner text-gradient">JANITORIAL</span>
+          </h1>
         </div>
-        <h2>SERVICES</h2>
+        <h3 class="jt-subtitle">S E R V I C E S</h3>
       </div>
+      <!-- keep element for compatibility; hidden by CSS -->
+      <span class="jt-gold-sweep" aria-hidden="true"></span>
     </section>
 
     <!-- ===== ABOUT ===== -->
-    <section id="about" class="page-section" aria-labelledby="about-title" data-animate-group>
-      <h2 id="about-title" class="section-title" data-animate="fade">
-        ABOUT OUR JANITORIAL COMPANY
-      </h2>
+    <section id="jt-about" class="page-section" data-animate-group>
+      <div class="container">
+        <h2 class="section-title text-gradient" data-animate="fade">About Our Janitorial Company</h2>
 
-      <div class="about-intro grid grid-2">
-        <div class="about-card card card-hover" data-animate>
-          <p class="muted">
-            We don’t just provide cleaning services—we cheerfully deliver our best. Your
-            business has different needs every day, so you only pay for the actual number
-            of work hours. No fixed blocks, no wasted time.
-          </p>
-          <p class="muted" style="margin-top:.5rem">
-            From daily office upkeep to deep cleaning and floor care, we tailor every plan
-            to the space and schedule you prefer.
-          </p>
+        <div class="jt-about-card" data-animate>
+          <div class="about-text">
+            <p>
+              DelaCruzPH Corporation delivers dependable janitorial solutions for offices, clinics,
+              retail spaces, and buildings. Our trained teams follow documented checklists and
+              safety standards to keep your space consistently clean—every visit.
+            </p>
+            <p>
+              From nightly maintenance to deep cleans and move-ins/outs, we tailor your scope to
+              schedule, budget, and SLAs—with transparent reporting and clear escalation paths.
+            </p>
+          </div>
+          <div class="about-image">
+            <img src="../assets/images/delacruzph.corporation copy1.png" alt="DelaCruzPH Corporation" />
+          </div>
         </div>
-
-        <aside class="about-media card" data-animate aria-label="Janitorial preview"></aside>
       </div>
     </section>
 
-    <!-- ===== SERVICES (big list like VA) ===== -->
-    <section id="svc" class="page-section" aria-labelledby="services-title" data-animate-group>
-      <h2 id="services-title" class="section-title" data-animate="fade">
-        OUR JANITORIAL SERVICES
-      </h2>
+    <!-- ===== SERVICES ===== -->
+    <section id="jt-services" class="page-section" data-animate-group>
+      <div class="container">
+        <h2 class="section-title text-gradient" data-animate="fade">Our Janitorial Services</h2>
 
-      <article class="services-list card" data-animate>
-        <ul class="bullets">
-          <li>
-            <span class="bicon"><i class="ri-building-2-line"></i></span>
-            <div><strong>Regular Office Cleaning</strong> — dusting, sweeping, mopping, garbage
-              collection, and disinfection of shared areas.</div>
-          </li>
-          <li>
-            <span class="bicon"><i class="ri-sparkling-line"></i></span>
-            <div><strong>Deep Cleaning</strong> — intensive sanitation for high-traffic zones,
-              restrooms, and hard-to-reach surfaces.</div>
-          </li>
-          <li>
-            <span class="bicon"><i class="ri-grid-line"></i></span>
-            <div><strong>Floor Care</strong> — scrubbing, polishing, and waxing to keep floors
-              looking new.</div>
-          </li>
-          <li>
-            <span class="bicon"><i class="ri-brush-2-line"></i></span>
-            <div><strong>Interior &amp; Exterior</strong> — glass partitions, windows, storefronts,
-              and exterior touchpoints.</div>
-          </li>
-          <li>
-            <span class="bicon"><i class="ri-leaf-line"></i></span>
-            <div><strong>Eco-friendly Options</strong> — green products upon request for a safer
-              workspace.</div>
-          </li>
-          <li>
-            <span class="bicon"><i class="ri-time-line"></i></span>
-            <div><strong>Flexible Scheduling</strong> — pay only for actual work hours, no hidden fees.</div>
-          </li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- ===== WHAT WE CAN DO (4 small cards like VA) ===== -->
-    <section class="page-section" aria-labelledby="cap-title" data-animate-group>
-      <h2 id="cap-title" class="section-title" data-animate="fade">
-        WHAT WE CAN DO
-      </h2>
-
-      <div class="cap-grid grid grid-3">
-        <div class="cap card card-hover" data-animate>
-          <div class="cap-ico"><i class="ri-calendar-line" aria-hidden="true"></i></div>
-          <h3>Email &amp; Calendar</h3>
-          <p class="muted">Schedule coordination with building admins &amp; tenants.</p>
-        </div>
-        <div class="cap card card-hover" data-animate>
-          <div class="cap-ico"><i class="ri-customer-service-2-line"></i></div>
-          <h3>Customer Support</h3>
-          <p class="muted">Issue logging &amp; quick dispatch for onsite teams.</p>
-        </div>
-        <div class="cap card card-hover" data-animate>
-          <div class="cap-ico"><i class="ri-check-double-line"></i></div>
-          <h3>Reports &amp; Inspections</h3>
-          <p class="muted">Photo reports, checklists, and QC visits.</p>
-        </div>
-        <div class="cap card card-hover" data-animate>
-          <div class="cap-ico"><i class="ri-file-list-3-line"></i></div>
-          <h3>Documents</h3>
-          <p class="muted">SOW, SLAs, and permits organized &amp; updated.</p>
+        <div class="jt-services-grid">
+          <article class="jt-service-card" data-animate>
+            <div class="icon-wrap"><i class="ri-building-2-line"></i></div>
+            <h3>Regular Office Cleaning</h3>
+            <p>Dusting, mopping, trash handling, pantry reset, and shared-area disinfection.</p>
+          </article>
+          <article class="jt-service-card" data-animate>
+            <div class="icon-wrap"><i class="ri-sparkling-2-line"></i></div>
+            <h3>Deep Cleaning</h3>
+            <p>High-touch points, grout/edges, vents, and behind fixtures—thorough top-to-bottom clean.</p>
+          </article>
+          <article class="jt-service-card" data-animate>
+            <div class="icon-wrap"><i class="ri-grid-line"></i></div>
+            <h3>Floor Care</h3>
+            <p>Scrubbing, polishing, waxing; restore floors and extend their life.</p>
+          </article>
+          <article class="jt-service-card" data-animate>
+            <div class="icon-wrap"><i class="ri-brush-2-line"></i></div>
+            <h3>Interior & Exterior</h3>
+            <p>Glass partitions, windows, storefronts, and exterior touchpoints.</p>
+          </article>
+          <article class="jt-service-card" data-animate>
+            <div class="icon-wrap"><i class="ri-leaf-line"></i></div>
+            <h3>Eco-Friendly Options</h3>
+            <p>Green products upon request for a safer workplace.</p>
+          </article>
+          <article class="jt-service-card" data-animate>
+            <div class="icon-wrap"><i class="ri-time-line"></i></div>
+            <h3>Flexible Scheduling</h3>
+            <p>Only pay for hours worked, with clear SLAs and weekly reports.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section id="contact" class="page-section" aria-labelledby="contact-title" data-animate-group>
-      <h2 id="contact-title" class="section-title" data-animate="fade">
-        WORK WITH US
-      </h2>
+    <section id="jt-contact" class="page-section" data-animate-group>
+      <div class="dcp-contacts-container container">
+        <div class="dcp-contact-card" data-animate>
+          <h2 class="section-title text-gradient">Work With Us</h2>
+          <form class="dcp-form" action="/api/contact" method="POST">
+            <input type="hidden" name="source" value="janitorial-services" />
+            <label>Name <input type="text" name="name" placeholder="Your name" required></label>
+            <label>Email <input type="email" name="email" placeholder="you@example.com" required></label>
+            <label>Your Message <textarea name="message" rows="5" placeholder="Tell us what you need help with" required></textarea></label>
+            <button type="submit" class="dcp-btn-primary"><i class="ri-send-plane-2-fill"></i>&nbsp;Send</button>
+          </form>
+        </div>
 
-      <form class="contact-form card" action="#" method="post" data-animate>
-        <label><span>Your Name</span><input type="text" name="name" placeholder="Enter your name" required /></label>
-        <label><span>Your Email</span><input type="email" name="email" placeholder="Enter your email" required /></label>
-        <label><span>Your Message</span><textarea name="message" placeholder="Tell us about your cleaning needs" rows="5" required></textarea></label>
-        <button type="submit" class="btn btn-primary">Send</button>
-      </form>
+        <div class="dcp-map-card" data-animate>
+          <h3 class="text-gradient">Contact Information</h3>
+          <ul class="dcp-contact-list">
+            <li><i class="ri-phone-line"></i> (778) 746-1231</li>
+            <li><i class="ri-mail-line"></i> info@delacruzph.com</li>
+            <li><i class="ri-printer-line"></i> (778) 746-1431</li>
+            <li><i class="ri-map-pin-line"></i> 1383 W 8th Ave, Vancouver, BC V6H 3W4</li>
+          </ul>
+          <div class="dcp-map">
+            <iframe title="Map - 1383 W 8th Ave, Vancouver"
+              src="https://www.google.com/maps?q=1383%20W%208th%20Ave%2C%20Vancouver%2C%20BC%20V6H%203W4&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- ===== Footer ===== -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer-top grid grid-2">
-      <div class="footer-col card" data-animate>
-        <h4>Get in Touch</h4>
-        <p>Unit 123, Sample Road Street, XYZ City</p>
-        <p>(+63) 900 000 0000</p>
-        <p>hello@delacruzph.com</p>
+  <!-- FOOTER -->
+  <footer class="dcp-footer">
+    <div class="dcp-footer-inner container">
+      <div class="dcp-col brand">
+        <div class="logo">
+          <img class="brand-logo small" src="../assets/images/delacruzph.corporation copy1.png" alt="DelaCruzPH Corporation" />
+        </div>
+        <p>Reliable Janitorial and Virtual Assistant services with shining-gold standards and clear SLAs.</p>
+        <ul class="footer-contact">
+          <li><i class="ri-phone-line"></i> (778) 746-1231</li>
+          <li><i class="ri-mail-line"></i> info@delacruzph.com</li>
+          <li><i class="ri-printer-line"></i> (778) 746-1431</li>
+          <li><i class="ri-map-pin-line"></i> 1383 W 8th Ave, Vancouver, BC V6H 3W4</li>
+        </ul>
       </div>
-      <div class="footer-col card" data-animate>
+
+      <div class="dcp-col links">
         <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#svc">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul>
+          <li><a href="#jt-hero"><i class="ri-home-5-line"></i> Home</a></li>
+          <li><a href="#jt-services"><i class="ri-brush-3-line"></i> Services</a></li>
+          <li><a href="#jt-about"><i class="ri-information-line"></i> About</a></li>
+          <li><a href="#jt-contact"><i class="ri-phone-line"></i> Contact</a></li>
+          <li><a href="va-services.html" data-wipe><i class="ri-user-settings-line"></i> VA Service</a></li>
+        </ul>
+      </div>
+
+      <div class="dcp-col social">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="#"><i class="ri-facebook-circle-fill"></i> Facebook</a></li>
+          <li><a href="#"><i class="ri-instagram-fill"></i> Instagram</a></li>
+          <li><a href="#"><i class="ri-linkedin-box-fill"></i> LinkedIn</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2024 Delacruzph Corporation. All Rights Reserved.</p></div>
+    <p class="dcp-copy">© <span id="year"></span> DelaCruzPH Corporation. All rights reserved.</p>
   </footer>
 
-  <!-- stable mobile 100vh -->
-  <script>
-    const setVH=()=>document.documentElement.style.setProperty('--vh',(window.innerHeight*0.01)+'px');
-    window.addEventListener('resize',setVH,{passive:true}); setVH();
-  </script>
+  <!-- Page wipe overlay -->
+  <div class="page-wipe" aria-hidden="true"></div>
 
-  <!-- Scroll: Play/Reverse (both directions) -->
-  <script>
-    (function(){
-      const groups=document.querySelectorAll('[data-animate-group]');
-      groups.forEach(g=>{
-        const items=[...g.querySelectorAll('[data-animate]')];
-        items.forEach((el,i)=>el.style.setProperty('--stagger',(i*90)+'ms'));
-      });
-      const io=new IntersectionObserver((ents)=>{
-        ents.forEach(e=>{
-          if(e.isIntersecting){ e.target.classList.add('in-view'); }
-          else{ e.target.classList.remove('in-view'); }
-        });
-      },{threshold:.18, rootMargin:"0px 0px -10% 0px"});
-      document.querySelectorAll('[data-animate], .section-title').forEach(el=>io.observe(el));
-    })();
-  </script>
+  <!-- JS (includes broom sweep + shine triggers) -->
+  <script src="../assets/js/janitorial.js" defer></script>
 </body>
 </html>

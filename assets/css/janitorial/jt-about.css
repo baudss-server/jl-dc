@@ -1,10 +1,24 @@
-/* about section — plain solid card like VA */
-#about .about-intro{ align-items:stretch; }
-#about .about-card{ padding:20px; }
-#about .about-media{
-  min-height:140px;
-  background: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  border-radius: var(--radius);
+/* ABOUT — match main/VA glass big card */
+.jt-page #jt-about.page-section{ padding:80px 0 }
+.jt-page #jt-about .container{ width:min(1200px,92vw); margin:0 auto }
+.jt-page #jt-about .section-title{ text-align:center; margin:0 0 18px }
+
+.jt-page #jt-about .jt-about-card{
+  display:grid; grid-template-columns: 1.15fr .85fr;
+  gap: clamp(18px,4vw,36px);
+  align-items:center;
+  padding:20px;
+  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
-@media (max-width:640px){ #about .about-media{ min-height:120px; } }
+.jt-page #jt-about .about-text p{ margin:.4rem 0; color:#dcdcdc; text-align:justify }
+.jt-page #jt-about .about-image{ display:flex; align-items:center; justify-content:center }
+.jt-page #jt-about .about-image img{ width: clamp(200px, 42vw, 360px); height:auto; object-fit:contain }
+
+@media (max-width: 900px){
+  .jt-page #jt-about .jt-about-card{ grid-template-columns:1fr }
+}

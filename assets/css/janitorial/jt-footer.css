@@ -1,150 +1,45 @@
-/* ===== Professional Footer (Remix Icons) =====
-   Safe defaults via CSS variables; adjust as needed.
-   Only styles the footer to avoid side effects.
-*/
-:root{
-  --footer-bg: #0f1115;
-  --footer-border: #1b2230;
-  --footer-text: #cbd5e1;
-  --footer-muted: #8b98a7;
-  --footer-accent: #22d3ee; /* teal */
-  --footer-link: #e2e8f0;
-  --footer-radius: 14px;
+/* FOOTER — professional & consistent with main/VA, gold icons */
+.jt-page .dcp-footer{
+  background:#0f0f0f; color:#ededed;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:48px 0 18px;
+}
+.jt-page .dcp-footer-inner{
+  width:min(1200px,92vw); margin-inline:auto;
+  display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:28px
+}
+.jt-page .dcp-col h4{ margin:0 0 10px; font-size:1.05rem; font-weight:600; color:#fff }
+.jt-page .dcp-col p{ color:#cfcfcf; margin:.35rem 0 1rem }
+.jt-page .dcp-col ul{ list-style:none; margin:0; padding:0; display:grid; gap:10px }
+.jt-page .dcp-col ul li{ display:flex; align-items:center; gap:10px; color:#cfcfcf }
+.jt-page .dcp-col ul li a{ color:#cfcfcf; text-decoration:none; display:inline-flex; align-items:center; gap:8px }
+
+.jt-page .brand-logo.small{ height:34px; width:auto }
+
+/* gold icons */
+.jt-page .dcp-footer i,
+.jt-page .dcp-footer a i{
+  color: var(--gold-strong) !important;
+  filter: drop-shadow(0 0 6px rgba(255,216,77,.25));
+  font-size:1.08rem; line-height:1;
+}
+.jt-page .dcp-col.links a i,
+.jt-page .dcp-col.social a i{ font-size:1.12rem }
+
+.jt-page .dcp-col.links a:hover,
+.jt-page .dcp-col.social a:hover{ color:#fff }
+.jt-page .dcp-col.links a:hover i,
+.jt-page .dcp-col.social a:hover i{ filter: drop-shadow(0 0 10px rgba(255,216,77,.38)) }
+
+.jt-page .dcp-copy{
+  width:min(1200px,92vw); margin:22px auto 0;
+  padding-top:14px; border-top:1px solid rgba(255,255,255,.08);
+  text-align:center; color:#bdbdbd; font-size:.9rem
 }
 
-.footer{
-  background: var(--footer-bg);
-  color: var(--footer-text);
-  border-top: 1px solid var(--footer-border);
-  padding: 56px 20px 18px;
-  font-size: 0.95rem;
-}
-
-.footer a{ color: var(--footer-link); text-decoration: none; }
-.footer a:hover{ color: var(--footer-accent); }
-
-.footer__container{
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(210px,1fr));
-  gap: 28px;
-  padding-bottom: 24px;
-  border-bottom: 1px dashed var(--footer-border);
-}
-
-.footer__col{ min-width: 210px; }
-
-.footer__logo img{
-  height: 44px; width: auto; display: block; margin-bottom: 14px;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,.3));
-}
-
-.footer__tagline{
-  color: var(--footer-muted);
-  line-height: 1.6;
-  margin: 0 0 14px;
-}
-
-.footer__title{
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: .3px;
-  color: var(--footer-accent);
-  margin: 4px 0 14px;
-}
-
-.footer__links,
-.footer__contact,
-.footer__socials{
-  list-style: none; margin: 0; padding: 0;
-}
-
-.footer__links li + li,
-.footer__contact li + li{ margin-top: 10px; }
-
-.footer__contact li{
-  display: grid;
-  grid-template-columns: 22px 1fr;
-  align-items: start;
-  column-gap: 10px;
-}
-
-.footer__icon{
-  font-size: 1.1rem;
-  color: var(--footer-accent);
-  line-height: 1.3;
-  margin-top: 1px;
-}
-
-.footer__address{ font-style: normal; color: var(--footer-text); }
-
-.footer__socials{
-  display: flex; gap: 10px; margin-top: 10px;
-}
-.footer__social{
-  width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;
-  border: 1px solid var(--footer-border);
-  border-radius: 50%;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.footer__social:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 4px rgba(34,211,238,.12);
-  border-color: var(--footer-accent);
-}
-
-/* Bottom bar */
-.footer__bottom{
-  position: relative;
-  max-width: 1200px;
-  margin: 16px auto 0;
-  display: flex; align-items: center; justify-content: center;
-  gap: 16px; text-align: center;
-}
-
-.footer__legal{
-  color: var(--footer-muted);
-  font-size: .9rem;
-  margin: 0; padding: 10px 48px; /* space for the to-top button on desktop */
-}
-
-.footer__to-top{
-  position: absolute; right: 0; top: 0;
-  height: 36px; width: 36px;
-  display: inline-flex; align-items: center; justify-content: center;
-  border: 1px solid var(--footer-border);
-  background: transparent; color: var(--footer-link);
-  border-radius: var(--footer-radius);
-  cursor: pointer;
-  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
-}
-.footer__to-top:hover{
-  border-color: var(--footer-accent);
-  box-shadow: 0 0 0 6px rgba(34,211,238,.12);
-  transform: translateY(-2px);
-}
-
-/* Accessibility: focus-visible */
-.footer a:focus-visible,
-.footer__to-top:focus-visible{
-  outline: 2px solid var(--footer-accent);
-  outline-offset: 3px;
-  border-radius: 8px;
-}
-
-/* Visually hidden utility */
-.sr-only{
-  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
-}
-
-/* Responsive */
-@media (max-width: 1000px){
-  .footer__container{ grid-template-columns: repeat(2, minmax(210px,1fr)); }
-  .footer__legal{ padding: 10px 40px; }
-}
-@media (max-width: 560px){
-  .footer__container{ grid-template-columns: 1fr; }
-  .footer__to-top{ position: static; order: -1; margin-bottom: 10px; }
-  .footer__legal{ padding: 6px 0; }
+@media (max-width:992px){ .jt-page .dcp-footer-inner{ grid-template-columns:1fr 1fr } }
+@media (max-width:600px){
+  .jt-page .dcp-footer{ padding:36px 0 16px }
+  .jt-page .dcp-footer-inner{ grid-template-columns:1fr; gap:22px }
+  .jt-page .brand-logo.small{ height:30px }
 }

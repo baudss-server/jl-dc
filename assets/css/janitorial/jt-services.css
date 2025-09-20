@@ -1,22 +1,31 @@
-/* big list + capability cards — plain dark */
+/* SERVICES — same card vibe as main/VA */
+.jt-page #jt-services.page-section{ padding:80px 0 }
+.jt-page #jt-services .container{ width:min(1200px,92vw); margin:0 auto }
+.jt-page #jt-services .section-title{ text-align:center; margin:0 0 18px }
 
-.services-list{ padding:18px; background: var(--card-bg) !important; border:1px solid var(--card-border) !important; border-radius:var(--radius); }
-.services-list .bullets{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
-.services-list .bullets li{ display:grid; grid-template-columns:32px 1fr; gap:10px; align-items:start; }
+.jt-page #jt-services .jt-services-grid{
+  display:grid; gap: clamp(16px,3vw,24px);
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+@media (max-width:1000px){ .jt-page #jt-services .jt-services-grid{ grid-template-columns:repeat(2,1fr) } }
+@media (max-width:640px){  .jt-page #jt-services .jt-services-grid{ grid-template-columns:1fr } }
 
-.services-list .bicon{
-  width:32px; height:32px; border-radius:10px; display:grid; place-items:center; font-size:18px;
+.jt-page #jt-services .jt-service-card{
+  padding:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.45);
+  transition: transform .25s ease;
+}
+.jt-page #jt-services .jt-service-card:hover{ transform: translateY(-2px) }
+
+.jt-page #jt-services .icon-wrap{
+  width:42px; height:42px; border-radius:12px;
+  display:grid; place-items:center; font-size:22px;
   background:#1b1b1b; border:1px solid rgba(255,255,255,.18);
+  color: var(--gold-strong);
+  margin-bottom:.4rem;
 }
-
-.cap-grid{ align-items:stretch; }
-.cap{
-  padding:18px; background: var(--card-bg) !important; border:1px solid var(--card-border) !important; border-radius:var(--radius);
-  display:flex; flex-direction:column; gap:8px; text-align:left; min-height:150px;
-}
-.cap h3{ margin:0; font-size:1.02rem; }
-.cap p{ margin:0; color:var(--muted); }
-.cap-ico{
-  width:40px; height:40px; border-radius:12px; display:grid; place-items:center; font-size:22px;
-  background:#1b1b1b; border:1px solid rgba(255,255,255,.18);
-}
+.jt-page #jt-services .jt-service-card h3{ margin:.4rem 0 .25rem; font-size:1.08rem }
+.jt-page #jt-services .jt-service-card p{ margin:0; color:#cfcfcf; text-align:justify }

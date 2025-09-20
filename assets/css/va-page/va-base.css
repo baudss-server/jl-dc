@@ -1,19 +1,103 @@
-/* General styles for the VA page */
-.page-section {
-    padding: 80px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+/* ===== VA BASE ===== */
+
+html { scroll-behavior: smooth; }
+:root{ --va-nav-offset: 84px; }
+
+#va-hero, #va-about, #va-intro, #va-services-list, #va-contact {
+  scroll-margin-top: var(--va-nav-offset);
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.5em;
-    font-weight: bold;
+/* Section rhythm / containers (match main) */
+#va-hero.hero-section,
+#va-about.page-section,
+#va-intro.page-section,
+#va-services-list.page-section,
+#va-contact.page-section { padding:80px 0 }
+
+#va-about .about-container,
+#va-intro .pro-provider-container,
+#va-services-list .services-grid,
+#va-contact .contact-form,
+.footer .footer-columns { width:min(1200px, 92vw); margin-inline:auto }
+
+/* Title underline */
+#va-hero .section-title, #va-about .section-title, #va-intro .section-title,
+#va-services-list .section-title, #va-contact .section-title {
+  position:relative; display:inline-block; padding-bottom:6px;
+}
+#va-hero .section-title::after, #va-about .section-title::after, #va-intro .section-title::after,
+#va-services-list .section-title::after, #va-contact .section-title::after{
+  content:""; position:absolute; left:0; bottom:0; width:100%; height:2px;
+  background:linear-gradient(90deg, rgba(255,216,77,0), rgba(255,216,77,.8), rgba(255,216,77,0));
+  border-radius:2px;
 }
 
-.text-gradient {
-    background: linear-gradient(to right, #ffffff, #ffd700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Text gradient */
+#va-hero .text-gradient, #va-about .text-gradient, #va-intro .text-gradient,
+#va-services-list .text-gradient, #va-contact .text-gradient{
+  background: linear-gradient(90deg, #fff, var(--gold-strong));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* Starfield (scoped) */
+.background-stars { position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none }
+.background-stars #stars, .background-stars #stars2, .background-stars #stars3 { position:absolute; inset:0; background:transparent }
+.background-stars #stars{
+  background:
+    radial-gradient(1px 1px at 20% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 80% 40%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 60% 70%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 10% 80%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 50% 10%, #fff 50%, transparent 51%);
+  animation: va-drift1 50s linear infinite; opacity:.75;
+}
+.background-stars #stars2{
+  background:
+    radial-gradient(1px 1px at 30% 60%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 20%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 80%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 15% 45%, #fff 50%, transparent 51%);
+  animation: va-drift2 80s linear infinite; opacity:.5;
+}
+.background-stars #stars3{
+  background:
+    radial-gradient(1px 1px at 25% 25%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 55% 45%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 75% 85%, #fff 50%, transparent 51%);
+  animation: va-drift3 120s linear infinite; opacity:.35;
+}
+@keyframes va-drift1 { to { transform: translateX(-160px) } }
+@keyframes va-drift2 { to { transform: translateX(-320px) } }
+@keyframes va-drift3 { to { transform: translateX(-480px) } }
+
+/* Scroll FX */
+.scroll-fx{ transition: opacity .6s ease, transform .6s ease; will-change: opacity, transform }
+.scroll-fx.in{ opacity:1; transform:none }
+.scroll-fx.out{ opacity:0; transform:translateY(16px) }
+
+/* Buttons */
+#va-hero .btn, #va-about .btn, #va-intro .btn, #va-services-list .btn, #va-contact .btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.7rem 1rem; border-radius:12px; font-weight:600; text-decoration:none; cursor:pointer;
+  border:1px solid var(--gold-strong); color:#ededed; background:transparent;
+  transition: box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+#va-hero .btn:hover, #va-about .btn:hover, #va-intro .btn:hover, #va-services-list .btn:hover, #va-contact .btn:hover{
+  color:#000; background:var(--gold-strong); border-color:var(--gold-strong);
+  box-shadow: 0 0 16px rgba(255,216,77,.25);
+}
+
+/* Focus visible */
+#va-hero a:focus-visible, #va-about a:focus-visible, #va-intro a:focus-visible,
+#va-services-list a:focus-visible, #va-contact a:focus-visible{
+  outline:2px solid rgba(255,216,77,.75); outline-offset:2px; border-radius:10px;
+}
+
+/* ====== PAGE-WIPE (extra: wipe-right for Main Page) ====== */
+/* default wipe-left exists in main.css (.page-wipe.is-active) */
+/* add wipe-right variant here */
+.page-wipe.is-active-right{ animation: pageWipeRight .6s ease forwards }
+@keyframes pageWipeRight{
+  0%{ transform: translate3d(-100%,0,0) }
+  100%{ transform: translate3d(0,0,0) }
 }

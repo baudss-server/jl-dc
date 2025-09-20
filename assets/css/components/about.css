@@ -1,93 +1,37 @@
-/* ================================
-   ABOUT (merged with former pro-provider)
-   ================================ */
+/* ===== ABOUT ===== */
+.dcp-about-us-section{ background:transparent }
+.dcp-about-inner{ text-align:center }
+.dcp-about-inner .section-title{ display:block }
 
-/* Section-level polish for #about-us */
-#about-us {
-  background: #0a0a0a;
-  color: #eaeaea;
-  padding: 60px 0;
+.about-big-card{
+  display:grid; grid-template-columns: 1.2fr .8fr; gap:20px; align-items:center;
+  padding:24px; border:1px solid rgba(255,255,255,.08); border-radius:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  box-shadow:0 8px 24px rgba(0,0,0,.45); margin-top:16px; text-align:left; position:relative;
 }
-#about-us .section-title {
-  color: var(--highlight-color, #FFD700);
-  margin-bottom: 18px;
-}
-
-/* Glass card look kung gumagamit ka ng .pro-provider-section sa HTML */
-.pro-provider-section {
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 30px rgba(0,0,0,.12);
-  margin-bottom: 20px;
-  padding: 32px;
+.about-big-card::before{
+  content:""; position:absolute; left:-1px; top:18px; bottom:18px; width:4px;
+  background: linear-gradient(180deg, rgba(255,216,77,0), rgba(255,216,77,.9), rgba(255,216,77,0));
+  border-radius:3px; box-shadow:0 0 20px rgba(255,216,77,.25);
 }
 
-/* Main container / layout */
-.pro-provider-container {
-  width: min(1100px, 92%);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr; /* text | image */
-  gap: 28px;
-  align-items: center;
-  justify-content: center;
+.about-text h3{ margin:0 0 10px 0; font-size:1.3rem; color:#fff }
+.about-text p{ margin:.5rem 0; color:#b8b8b8; text-align:justify; text-justify:inter-word }
+
+.about-image{ display:grid; place-items:center }
+.about-image img{
+  max-width:100%; height:auto; object-fit:contain;
+  border-radius:14px; border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 10px 26px rgba(0,0,0,.55), 0 0 0 rgba(255,216,77,0);
+  transition: box-shadow .25s ease, border-color .25s ease;
+}
+.about-image img:hover{
+  border-color: rgba(255,216,77,.45);
+  box-shadow: 0 12px 28px rgba(0,0,0,.6), 0 0 18px rgba(255,216,77,.22);
 }
 
-/* Text column */
-.content-text {
-  min-width: 280px;
-}
-.content-text h3 {
-  margin: 0 0 10px;
-  font-weight: 600;
-  color: var(--text-color, #fff);
-}
-.content-text p {
-  font-size: 1em;
-  line-height: 1.7;
-  margin-bottom: 15px;
-  color: var(--secondary-text-color, #cfcfcf);
-}
-
-/* Image column wrapper */
-.content-img {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.45);
-}
-
-/* CRITICAL FIX: cap the image height (no more super tall) */
-#about-us .pro-provider-section .content-img img,
-#about-us .content-img img {
-  width: 100%;
-  height: clamp(220px, 48vw, 460px) !important; /* <= adjust mo kung gusto mong mas mababa/mas mataas */
-  max-height: 520px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Optional list styles kung meron */
-.checkmark-list { list-style: none; padding: 0; margin-top: 20px; }
-.checkmark-list li { margin-bottom: 10px; font-weight: 500; }
-
-/* Responsive */
-@media (max-width: 900px) {
-  #about-us { padding: 40px 0; }
-  .pro-provider-container {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-}
-/* Glass card — no gray tint */
-#about-us .pro-provider-section {
-  background: transparent !important;                 /* tanggal ang gray */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.18);           /* subtle border */
-  box-shadow: 0 8px 30px rgba(0,0,0,0.22);            /* soft outer shadow */
+@media (max-width: 900px){
+  .about-big-card{ grid-template-columns: 1fr; gap:14px; padding:20px }
+  .about-image img{ max-width:260px }
+  .about-image{ order:-1 } /* image first on mobile */
 }

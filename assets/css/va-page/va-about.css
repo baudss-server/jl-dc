@@ -1,61 +1,75 @@
-/*
- * va-about.css
- * Styles for the About Us section of the VA page
-*/
+/* ===== VA ABOUT (scoped to #va-about) ===== */
+#va-about.page-section{ padding:80px 0 }
 
-#va-about .about-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 40px;
-    padding: 40px;
-
-    /* Glassmorphism Effect */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+/* CENTERED title + container width */
+#va-about .section-title{
+  display:block;
+  width:min(1200px, 92vw);   /* align with the about card width */
+  margin:0 auto 22px;        /* center horizontally */
+  text-align:center;
+  font-size: clamp(28px, 4.2vw, 40px);
+  line-height:1.2;
+}
+/* center the gold underline too */
+#va-about .section-title::after{
+  content:"";
+  display:block;
+  height:2px;
+  width:180px;                       /* fixed accent length looks cleaner */
+  margin:8px auto 0;                 /* center */
+  background: linear-gradient(90deg, rgba(255,216,77,0), rgba(255,216,77,.8), rgba(255,216,77,0));
+  border-radius:2px;
 }
 
-#va-about .about-content {
-    flex: 1;
-    text-align: left;
-    color: #f5f5f5;
-    line-height: 1.6;
+/* Big card container — matches main container */
+#va-about .about-container{
+  width:min(1200px, 92vw); margin-inline:auto;
+  display:grid; grid-template-columns: 1.15fr .85fr; align-items:center; gap:40px;
+  padding:40px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08); border-radius:20px;
+  box-shadow:0 10px 28px rgba(0,0,0,.5);
+  position:relative; overflow:hidden;
+}
+#va-about .about-container::before{
+  content:""; position:absolute; left:-1px; top:18px; bottom:18px; width:4px;
+  background: linear-gradient(180deg, rgba(255,216,77,0), rgba(255,216,77,.92), rgba(255,216,77,0));
+  border-radius:3px; box-shadow:0 0 18px rgba(255,216,77,.22);
+}
+#va-about .about-container::after{
+  content:""; position:absolute; right:-120px; top:-120px; width:260px; height:260px;
+  background: radial-gradient(120px 120px at 50% 50%, rgba(255,216,77,.18), transparent 60%);
+  pointer-events:none;
 }
 
-#va-about .about-content p {
-    margin-bottom: 20px;
+/* text */
+#va-about .about-content{ color:#f0f0f0; line-height:1.82; font-size: clamp(16px, 1.15vw, 18px) }
+#va-about .about-content h3{ margin:0 0 10px 0; font-size: clamp(22px, 2.6vw, 30px); line-height:1.25 }
+#va-about .about-content p{ margin:.7rem 0; color:#cfcfcf; text-align:justify; text-justify:inter-word }
+
+/* image */
+#va-about .about-image{ display:flex; align-items:center; justify-content:center }
+#va-about .placeholder-img{
+  width:100%; aspect-ratio: 4 / 3; border-radius:14px; border:1px solid rgba(255,255,255,.09);
+  background:
+    radial-gradient(180px 110px at 20% 14%, rgba(255,216,77,.18), transparent 60%),
+    #101010 url("../../images/delacruzph.corporation copy1.png") center/contain no-repeat;
+  box-shadow: 0 12px 30px rgba(0,0,0,.55);
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+#va-about .placeholder-img:hover{
+  border-color: rgba(255,216,77,.45);
+  box-shadow: 0 14px 34px rgba(0,0,0,.6), 0 0 18px rgba(255,216,77,.22);
+  transform: translateY(-2px);
 }
 
-#va-about .about-image {
-    flex: 1;
-    max-width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* responsive */
+@media (min-width: 1200px){ #va-about .about-container{ gap:46px; padding:44px } }
+@media (max-width: 992px){
+  #va-about .about-container{ grid-template-columns: 1fr; gap:20px; padding:22px }
+  #va-about .about-image{ order:-1 }
+  #va-about .placeholder-img{ max-width:88%; margin-inline:auto }
+  #va-about .about-content{ font-size: clamp(16px, 3.6vw, 18px); line-height:1.84 }
+  #va-about .about-content h3{ font-size: clamp(20px, 4.8vw, 26px) }
 }
-
-#va-about .placeholder-img {
-    width: 100%;
-    padding-bottom: 56.25%;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive adjustments */
-@media (max-width: 992px) {
-    #va-about .about-container {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
-
-    #va-about .about-image {
-        max-width: 80%;
-        margin-top: 20px;
-    }
-}
+@media (max-width: 520px){ #va-about .placeholder-img{ max-width:94% } }

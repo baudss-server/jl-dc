@@ -1,0 +1,18 @@
+/* VA PAGE ONLY – gold Remix icons in the footer (does not affect main site) */
+.va-page .dcp-footer i,
+.va-page .dcp-footer a i{
+  color: var(--gold-strong) !important;
+  filter: drop-shadow(0 0 6px rgba(255,216,77,.25));
+}
+
+/* optional: slight size boost for link/social icons */
+.va-page .dcp-footer .dcp-col.links a i,
+.va-page .dcp-footer .dcp-col.social a i{
+  font-size: 1.12rem;
+}
+
+/* stronger glow on hover */
+.va-page .dcp-footer .dcp-col.links a:hover i,
+.va-page .dcp-footer .dcp-col.social a:hover i{
+  filter: drop-shadow(0 0 10px rgba(255,216,77,.38));
+}

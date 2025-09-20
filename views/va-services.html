@@ -1,181 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
-    <title>Delacrunch - VA Services</title>
-    <link rel="icon" href="../assets/images/delacruzph..png" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/va-page/va-base.css">
-    <link rel="stylesheet" href="../assets/css/va-page/va-hero.css">
-    <link rel="stylesheet" href="../assets/css/va-page/va-about.css">
-    <link rel="stylesheet" href="../assets/css/va-page/va-services.css">
-    <link rel="stylesheet" href="../assets/css/va-page/va-contact.css">
-    <link rel="stylesheet" href="../assets/css/va-page/va-footer.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
-    </head>
-<body>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+  <title>DelaCruzPH — VA Services</title>
 
-    <div class="background-stars">
-        <div id='stars'></div>
-        <div id='stars2'></div>
-        <div id='stars3'></div>
+  <!-- Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- SHARED CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components/header.css" />
+  <link rel="stylesheet" href="../assets/css/components/footer.css" />
+  <link rel="stylesheet" href="../assets/css/components/contact.css" />
+
+  <!-- VA-SCOPED CSS -->
+  <link rel="stylesheet" href="../assets/css/va-page/va-base.css" />
+  <link rel="stylesheet" href="../assets/css/va-page/va-components.css" />
+  <link rel="stylesheet" href="../assets/css/va-page/va-hero.css" />
+  <link rel="stylesheet" href="../assets/css/va-page/va-about.css" />
+  <link rel="stylesheet" href="../assets/css/va-page/va-services.css" />
+  <!-- VA-only footer override (gold icons for VA page only) -->
+  <link rel="stylesheet" href="../assets/css/va-page/va-footer-override.css" />
+
+  <!-- Three.js (for hero 3D) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.149.0/build/three.module.js",
+        "three/examples/jsm/": "https://unpkg.com/three@0.149.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <noscript><style>.page-wipe{display:none!important}</style></noscript>
+</head>
+<body class="va-page">
+  <!-- Starfield BG -->
+  <div class="background-stars"><div id="stars"></div><div id="stars2"></div><div id="stars3"></div></div>
+
+  <!-- ========= HEADER ========= -->
+  <header class="dcp-header">
+    <div class="dcp-header-container">
+      <a href="#va-hero" class="dcp-brand" aria-label="DelaCruzPH Corporation">
+        <img class="brand-logo" src="../assets/images/delacruzph.corporation copy1.png" alt="DelaCruzPH Corporation">
+      </a>
+      <nav class="dcp-nav">
+        <a href="#va-hero">Home</a>
+        <a href="janitorial-services.html" data-wipe>Janitorial Service</a>
+        <a href="#va-services-list">Services</a>
+        <a href="#va-about">About</a>
+        <a href="#va-contact">Contact</a>
+        <a href="../index.html" data-wipe="right">Main Page</a>
+      </nav>
+      <button class="dcp-burger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
     </div>
+  </header>
 
-    <header class="header">
-        <nav>
-            <div class="logo">
-                <a href="../index.html" data-transition="wipe-right"><img src="../assets/images/delacruzph..png" alt="Delacruzph. Corporation Logo" class="logo-image"></a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#va-hero">Home</a></li>
-                <li><a href="#va-about">About Us</a></li>
-                <li><a href="#va-intro">Services</a></li>
-                <li><a href="#va-contact">Contacts</a></li>
-                <li class="nav-back-button"><a href="../index.html" class="btn btn-primary" data-transition="wipe-right"><i class="fas fa-arrow-left"></i> Back</a></li>
-            </ul>
-        </nav>
-    </header>
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero-section" id="va-hero">
+      <div id="hero-3d-model-container">
+        <canvas id="hero-3d-canvas"></canvas>
+      </div>
+      <div class="hero-text">
+        <h1>VIRTUAL ASSISTANT</h1>
+        <h2>SERVICES</h2>
+      </div>
+    </section>
 
-    <main>
-        <section class="hero-section" id="va-hero">
-            <div id="hero-3d-model-container">
-                <canvas id="hero-3d-canvas"></canvas>
-            </div>
-            <div class="hero-text">
-                <h1>VIRTUAL ASSISTANT</h1>
-                <h2>SERVICES</h2>
-            </div>
-        </section>
-
-        <section id="va-about" class="page-section">
-            <h2 class="section-title text-gradient">About Our VA Company</h2>
-            <div class="about-container">
-                <div class="about-content">
-                    <p>We are a dedicated team of Virtual Assistants committed to helping businesses thrive. Our expertise in administrative tasks, customer support, and project management allows our clients to reclaim their time and focus on core business strategies.</p>
-                    <p>At our core, we believe in building strong, reliable partnerships. Our mission is to provide seamless and efficient support that integrates perfectly with your workflow, ensuring your operations run smoothly and you achieve your goals.</p>
-                </div>
-                <div class="about-image">
-                    <div class="placeholder-img"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="va-intro" class="page-section">
-            <h2 class="section-title text-gradient">Our Virtual Assistance Services</h2>
-            <div class="pro-provider-container">
-                <div class="content-text">
-                    <p>Hiring a Virtual Assistant isn’t just about outsourcing tasks—it’s about creating more time and focus for your business. Here’s what you get when you work with us:</p>
-                    <ul class="remix-icon-list">
-                        <li><i class="ri-time-line"></i> <strong>Save Time</strong> – Free up your schedule by delegating repetitive and time-consuming tasks.</li>
-                        <li><i class="ri-money-dollar-circle-line"></i> <strong>Cut Costs</strong> – Avoid the expenses of hiring in-house staff (benefits, office space, equipment). You only pay for the hours you need.</li>
-                        <li><i class="ri-rocket-line"></i> <strong>Boost Productivity</strong> – With administrative work off your plate, you can concentrate on strategy, sales, and customer relationships.</li>
-                        <li><i class="ri-folder-line"></i> <strong>Stay Organized</strong> – From inbox management to calendar scheduling, we bring structure and clarity to your day-to-day operations.</li>
-                        <li><i class="ri-tools-line"></i> <strong>Access Skilled Support</strong> – Gain access to a pool of trained professionals without the hassle of recruitment or training.</li>
-                    </ul>
-                </div>
-                <div class="content-img">
-                    <img src="../assets/images/va-team.jpg" alt="VA Team">
-                </div>
-            </div>
-        </section>
-
-        <section id="va-services-list" class="page-section">
-            <h2 class="section-title text-gradient">What We Can Do</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="icon-wrapper">
-                        <i class="ri-mail-line"></i>
-                    </div>
-                    <h3>Email & Calendar Management</h3>
-                    <p>Organize your inbox, prioritize emails, schedule meetings, and keep your calendar under control.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-wrapper">
-                        <i class="ri-customer-service-2-line"></i>
-                    </div>
-                    <h3>Customer Support</h3>
-                    <p>Handle customer inquiries via email, chat, or phone and ensure timely, professional responses.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-wrapper">
-                        <i class="ri-bar-chart-2-line"></i>
-                    </div>
-                    <h3>Research & Reports</h3>
-                    <p>Gather data, analyze results, and provide concise reports to inform your business decisions.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-wrapper">
-                        <i class="ri-file-text-line"></i>
-                    </div>
-                    <h3>Document Preparation</h3>
-                    <p>Create presentations, proposals, spreadsheets, and other business documents with accuracy and polish.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="va-contact" class="page-section">
-            <h2 class="section-title text-gradient">Work With Us</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="va-name">Your Name</label>
-                    <input id="va-name" type="text" placeholder="Enter your name">
-                </div>
-                <div class="form-group">
-                    <label for="va-email">Your Email</label>
-                    <input id="va-email" type="email" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="va-message">Your Message</label>
-                    <textarea id="va-message" rows="5" placeholder="Tell us what you need help with"></textarea>
-                </div>
-                <button type="submit" class="btn submit-btn">Send</button>
-            </form>
-        </section>
-
-        <section class="back-cta">
-            <a href="../index.html" class="btn" data-transition="wipe-right">Back to Home</a>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-columns">
-            <div class="footer-column">
-                <h4 class="footer-title">Get In Touch</h4>
-                <ul>
-                    <li><span class="contact-icon">📍</span> 4-456 Gorge Road East Victoria BC V8T 2W4 Canada</li>
-                    <li><span class="contact-icon">📧</span> info@delacruzph.com</li>
-                    <li><span class="contact-icon">📞</span> (778) 746-1231 or (778) 922-9994</li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4 class="footer-title">Quick Links</h4>
-                <ul>
-                    <li><a href="#va-hero">Home</a></li>
-                    <li><a href="#va-about">About Us</a></li>
-                    <li><a href="#va-intro">Our Services</a></li>
-                    <li><a href="#va-contact">Contact Us</a></li>
-                </ul>
-            </div>
+    <!-- ===== ABOUT ===== -->
+    <section id="va-about" class="page-section">
+      <h2 class="section-title text-gradient" style="text-align:center">About Our VA Company</h2>
+      <div class="about-container">
+        <div class="about-content">
+          <p>We are a dedicated team of Virtual Assistants committed to helping businesses thrive. Our expertise in administrative tasks, customer support, and project management allows our clients to reclaim their time and focus on core business strategies.</p>
+          <p>At our core, we believe in building strong, reliable partnerships. Our mission is to provide seamless and efficient support that integrates perfectly with your workflow, ensuring your operations run smoothly and you achieve your goals.</p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Delacruzph Corporation. All Rights Reserved.</p>
+        <div class="about-image">
+          <div class="placeholder-img"></div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.149.0/build/three.module.js",
-                "three/examples/jsm/": "https://unpkg.com/three@0.149.0/examples/jsm/"
-            }
-        }
-    </script>
-    <script src="../assets/js/va-page.js" type="module"></script>
-    <script src="../assets/js/main.js"></script>
+    <!-- ===== INTRO (Benefits) ===== -->
+    <section id="va-intro" class="page-section">
+      <h2 class="section-title text-gradient">Our Virtual Assistance Services</h2>
 
+      <div class="pro-provider-container">
+        <!-- LEFT: TEXT -->
+        <div class="content-text">
+          <p class="lead">
+            Hiring a Virtual Assistant isn’t just about outsourcing tasks—it’s about creating more time and focus
+            for your business. Here’s what you get when you work with us:
+          </p>
+
+          <ul class="feature-list">
+            <li>
+              <i class="ri-time-line"></i>
+              <div>
+                <h4>Save Time</h4>
+                <p>Free up your schedule by delegating repetitive and time-consuming tasks.</p>
+              </div>
+            </li>
+            <li>
+              <i class="ri-money-dollar-circle-line"></i>
+              <div>
+                <h4>Cut Costs</h4>
+                <p>Avoid the expenses of hiring in-house staff. You only pay for the hours you need.</p>
+              </div>
+            </li>
+            <li>
+              <i class="ri-rocket-line"></i>
+              <div>
+                <h4>Boost Productivity</h4>
+                <p>Focus on strategy, sales, and customer relationships while we handle the rest.</p>
+              </div>
+            </li>
+            <li>
+              <i class="ri-folder-line"></i>
+              <div>
+                <h4>Stay Organized</h4>
+                <p>Keep your inbox, calendar, and workflows under control with clear processes.</p>
+              </div>
+            </li>
+            <li>
+              <i class="ri-tools-line"></i>
+              <div>
+                <h4>Access Skilled Support</h4>
+                <p>Get trained professionals—no recruitment hassle required.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RIGHT: IMAGE -->
+        <div class="content-img">
+          <figure class="media-card">
+            <div class="media-frame">
+              <img src="../assets/images/va.png"
+                   alt="Virtual Assistant services illustration"
+                   loading="lazy" width="1200" height="628">
+            </div>
+            <figcaption>
+              <i class="ri-team-line"></i>
+              Your VA partner for marketing, support, inventory, and more.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="va-services-list" class="page-section">
+      <h2 class="section-title text-gradient">What We Can Do</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="icon-wrapper"><i class="ri-mail-line"></i></div>
+          <h3>Email & Calendar Management</h3>
+          <p>Organize your inbox, prioritize emails, and schedule meetings.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon-wrapper"><i class="ri-customer-service-2-line"></i></div>
+          <h3>Customer Support</h3>
+          <p>Handle inquiries via email, chat, or phone with timely responses.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon-wrapper"><i class="ri-bar-chart-2-line"></i></div>
+          <h3>Research & Reports</h3>
+          <p>Gather data, analyze results, and deliver concise reports.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon-wrapper"><i class="ri-file-text-line"></i></div>
+          <h3>Document Preparation</h3>
+          <p>Create presentations, proposals, spreadsheets, and more.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT (shared UI + single endpoint) ===== -->
+    <section id="va-contact" class="dcp-contacts-section page-section">
+      <div class="dcp-contacts-container container">
+        <!-- Form left -->
+        <div class="dcp-contact-card glass">
+          <h2 class="section-title text-gradient">Work With Us</h2>
+
+          <form class="dcp-form" action="/api/contact" method="POST">
+            <input type="hidden" name="source" value="va-services" />
+            <label>Name <input type="text" name="name" placeholder="Your name" required /></label>
+            <label>Email <input type="email" name="email" placeholder="you@example.com" required /></label>
+            <label>Message <textarea name="message" rows="5" placeholder="How can we help?" required></textarea></label>
+            <button type="submit" class="dcp-btn-primary"><i class="ri-send-plane-2-fill"></i>&nbsp;Send Message</button>
+          </form>
+        </div>
+
+        <!-- Info right + map -->
+        <div class="dcp-map-card glass">
+          <h3 class="text-gradient">Get in touch</h3>
+          <ul class="dcp-contact-list">
+            <li><i class="ri-mail-line"></i> info@delacruzph.com</li>
+            <li><i class="ri-phone-line"></i> (778) 746-1231</li>
+            <li><i class="ri-time-line"></i> Mon–Sat, 9am–6pm</li>
+            <li><i class="ri-map-pin-line"></i> 1383 W 8th Ave, Vancouver, BC V6H 3W4</li>
+          </ul>
+          <div class="dcp-map">
+            <iframe
+              title="Map - 1383 W 8th Ave, Vancouver"
+              src="https://www.google.com/maps?q=1383%20W%208th%20Ave%2C%20Vancouver%2C%20BC%20V6H%203W4&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to Top -->
+    <section class="back-cta">
+      <a href="#va-hero" class="btn">Back to Top</a>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="dcp-footer">
+    <div class="dcp-footer-inner container">
+      <!-- Brand / Blurb / Contact Info -->
+      <div class="dcp-col brand">
+        <div class="logo">
+          <img class="brand-logo small" src="../assets/images/delacruzph.corporation copy1.png" alt="DelaCruzPH Corporation" />
+        </div>
+        <p>Reliable Janitorial and Virtual Assistant services with shining-gold standards and clear SLAs.</p>
+        <ul class="footer-contact">
+          <li><i class="ri-phone-line"></i> (778) 746-1231</li>
+          <li><i class="ri-mail-line"></i> info@delacruzph.com</li>
+          <li><i class="ri-printer-line"></i> (778) 746-1431</li>
+          <li><i class="ri-map-pin-line"></i> 1383 W 8th Ave, Vancouver, BC V6H 3W4</li>
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="dcp-col links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#va-hero"><i class="ri-home-5-line"></i> Home</a></li>
+          <li><a href="janitorial-services.html" data-wipe><i class="ri-building-2-line"></i> Janitorial</a></li>
+          <li><a href="#va-services-list"><i class="ri-user-settings-line"></i> VA Service</a></li>
+          <li><a href="#va-about"><i class="ri-information-line"></i> About</a></li>
+          <li><a href="#va-contact"><i class="ri-phone-line"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div class="dcp-col social">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="#"><i class="ri-facebook-circle-fill"></i> Facebook</a></li>
+          <li><a href="#"><i class="ri-instagram-fill"></i> Instagram</a></li>
+          <li><a href="#"><i class="ri-linkedin-box-fill"></i> LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="dcp-copy">© <span id="year"></span> DelaCruzPH Corporation. All rights reserved.</p>
+  </footer>
+
+  <!-- Page-wipe overlay -->
+  <div class="page-wipe" aria-hidden="true"></div>
+
+  <!-- JS -->
+  <script src="../assets/js/va-page.js" type="module"></script>
+  <script>
+    // footer year fallback
+    const yr = document.getElementById('year');
+    if (yr) yr.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

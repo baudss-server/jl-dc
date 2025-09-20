@@ -1,176 +1,94 @@
-// EXISTING CODE: Mobile menu toggle
+// main.js — page-wipe + scroll animations (play/reverse; NO wipe-left)
 document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+  // Footer year
+  const yr = document.getElementById('year');
+  if (yr) yr.textContent = new Date().getFullYear();
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
+  // Mobile nav
+  const burger = document.querySelector('.dcp-burger');
+  const nav = document.querySelector('.dcp-nav');
+  burger?.addEventListener('click', () => nav?.classList.toggle('dcp-open'));
 
-    // NEW CODE: Smooth scrolling para sa mga anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href') || '';
+      if (id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
     });
+  });
 
-    // === ADDED: safe register (kept behavior, avoids errors if CDN missing) ===
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-    }
-
-    // Initial load animation para sa hero section
-    gsap.from('.hero-section .card', {
-        y: 100,
-        opacity: 0,
-        stagger: 0.3,
-        duration: 1.2,
-        ease: 'power3.out'
+  // PAGE WIPE for inter-page links only
+  const overlay = document.querySelector('.page-wipe');
+  document.querySelectorAll('a[data-wipe], .dcp-nav a[href$=".html"][href^="views/"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      e.preventDefault();
+      if (overlay) {
+        overlay.classList.add('is-active');
+        setTimeout(() => { window.location.href = href; }, 500);
+      } else { window.location.href = href; }
     });
+  });
 
-    // Animation para sa bawat section kapag nag-s-scroll
-    gsap.utils.toArray('section').forEach(section => {
-        // Iba-iba ang animation depende sa ID ng section
-        let animation;
-        let triggerElement = section;
-        
-        // Simpler, more reliable animation for all sections including about-us and contacts
-        animation = gsap.from(section, {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: 'power2.out'
-        });
+  // ===== Scroll animations: Play on enter / Reverse on leave (both directions) =====
+  const scrollSelectors = [
+    '.hero-cards .card',
+    '.dcp-how-it-works-section .dcp-step-card',
+    '.about-big-card',
+    '.dcp-contacts-section .dcp-contact-card',
+    '.dcp-contacts-section .dcp-map-card',
+    '.dcp-footer .dcp-col'
+  ];
 
-        // Specific, simpler animation for about-us
-        if (section.id === 'about-us') {
-            animation = gsap.timeline()
-                .from(section.querySelector('.content-text'), {
-                    x: -100,
-                    opacity: 0,
-                    duration: 1,
-                    ease: 'power2.out'
-                })
-                .from(section.querySelector('.content-img'), {
-                    x: 100,
-                    opacity: 0,
-                    duration: 1,
-                    ease: 'power2.out'
-                }, '-=0.5'); // Start a bit earlier
-        }
+  const inView = (el) => {
+    const r = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const vw = window.innerWidth || document.documentElement.clientWidth;
+    return (r.bottom >= 0 && r.right >= 0 && r.top <= vh && r.left <= vw);
+  };
 
-        // Specific, simpler animation for contacts
-        if (section.id === 'contacts') {
-             animation = gsap.timeline()
-                .from(section.querySelector('.contact-details'), {
-                    x: -50,
-                    opacity: 0,
-                    duration: 1,
-                    ease: 'power2.out'
-                }, 'start')
-                .from(section.querySelector('.contact-form-container'), {
-                    x: 50,
-                    opacity: 0,
-                    duration: 1,
-                    ease: 'power2.out'
-                }, 'start')
-                .from(section.querySelector('.map-container'), {
-                    y: 50,
-                    opacity: 0,
-                    duration: 1,
-                    ease: 'power2.out'
-                }, 'start+=0.5');
-        }
-
-
-        ScrollTrigger.create({
-            trigger: triggerElement,
-            animation: animation,
-            start: 'top 95%', 
-            toggleActions: 'play reverse play reverse'
-        });
+  const targets = [];
+  scrollSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.classList.add('scroll-fx');          // NO wipe-left
+      if (inView(el)) el.classList.add('in'); // above-the-fold visible
+      else el.classList.add('out');           // offscreen hidden
+      targets.push(el);
     });
+  });
 
-    // Animation para sa footer
-    gsap.from('.footer-container', {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '.footer',
-            start: 'top 85%',
-            toggleActions: 'play reverse play reverse'
-        }
+  // Observer toggles in/out both directions
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      if (entry.isIntersecting) {             // Play (enter / enter-back)
+        el.classList.add('in');
+        el.classList.remove('out');
+      } else {                                // Reverse (leave / leave-back)
+        el.classList.add('out');
+        el.classList.remove('in');
+      }
     });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
 
-    // Back to Top button functionality
-    const toTopButton = document.querySelector('.to-top-btn');
-    if (toTopButton) {
-        toTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-});
-// === Page Transition (additions) ===
-(function () {
-    // Helper to run the wipe transition then navigate
-    function runPageTransition(direction, url) {
-        const overlay = document.createElement('div');
-        overlay.className = `page-transition from-${direction}`;
-        document.body.appendChild(overlay);
+  targets.forEach(el => io.observe(el));
 
-        // next frame → trigger the slide-in
-        requestAnimationFrame(() => {
-            overlay.classList.add('is-active');
-            overlay.addEventListener('transitionend', () => {
-                window.location.href = url;
-            }, { once: true });
-        });
-    }
-
-    // Bind for links that declare a transition
-    document.querySelectorAll('a[data-transition="wipe-left"]').forEach(a => {
-        a.addEventListener('click', (e) => {
-            // allow middle-click / new tab without blocking
-            if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-            e.preventDefault();
-            runPageTransition('left', a.href);
-        });
-    });
-
-    document.querySelectorAll('a[data-transition="wipe-right"]').forEach(a => {
-        a.addEventListener('click', (e) => {
-            if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-            e.preventDefault();
-            runPageTransition('right', a.href);
-        });
-    });
-})();
-// --- Footer helpers ---
-document.addEventListener('DOMContentLoaded', () => {
-  const y = document.getElementById('copyright-year');
-  if (y) y.textContent = new Date().getFullYear();
-
-  const toTop = document.querySelector('.footer__to-top');
-  if (toTop) {
-    toTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+  // Reduced motion: show everything
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    targets.forEach(el => { el.classList.add('in'); el.classList.remove('out'); });
   }
+
+  // Per-element initial failsafe (just in case of late styles)
+  setTimeout(() => {
+    targets.forEach(el => {
+      if (inView(el) && getComputedStyle(el).opacity === '0') {
+        el.classList.add('in');
+        el.classList.remove('out');
+      }
+    });
+  }, 600);
 });

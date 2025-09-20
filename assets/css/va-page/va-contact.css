@@ -1,48 +1,52 @@
-/* Contact section styles */
-#va-contact .contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #1a1a1a;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+/* ===== VA CONTACT ===== */
+#va-contact.page-section{
+  padding:80px 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
+#va-contact .section-title{ display:block; text-align:center; margin:0 0 14px }
 
-#va-contact .form-group {
-    margin-bottom: 20px;
+/* Form (container width = main) */
+#va-contact .contact-form{
+  width:min(1200px, 92vw); margin-inline:auto;
+  display:grid; grid-template-columns: 1fr 1fr; gap:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px;
+  box-shadow:0 8px 22px rgba(0,0,0,.45), 0 0 0 rgba(255,216,77,0);
+  transition: box-shadow .25s ease, border-color .25s ease;
 }
-
-#va-contact label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #ffd700;
+#va-contact .contact-form:hover{
+  border-color: rgba(255,216,77,.32);
+  box-shadow:0 10px 24px rgba(0,0,0,.5), 0 0 16px rgba(255,216,77,.14);
 }
-
-#va-contact input,
-#va-contact textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #444;
-    background-color: #2c2c2c;
-    color: #f5f5f5;
-    border-radius: 5px;
-    box-sizing: border-box;
+#va-contact .contact-form .form-group{ display:grid; gap:6px }
+#va-contact .contact-form label{ color:#ededed; font-weight:500 }
+#va-contact .contact-form input,
+#va-contact .contact-form textarea{
+  background:#121212; border:1px solid rgba(255,255,255,.08); color:#ededed; border-radius:12px; padding:12px 14px; outline:none;
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
-
-#va-contact .submit-btn {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: #ffd700;
-    color: #1a1a1a;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+#va-contact .contact-form input:focus,
+#va-contact .contact-form textarea:focus{
+  border-color:#ffd84d;
+  box-shadow: 0 0 0 3px rgba(255,216,77,.22);
 }
+#va-contact .contact-form textarea{ grid-column:1 / -1 }
+#va-contact .contact-form .submit-btn{
+  grid-column:1 / -1; justify-self:end;
+  background:var(--gold-strong); color:#000; border:1px solid var(--gold-strong);
+  padding:.75rem 1.05rem; border-radius:12px; cursor:pointer; font-weight:700;
+  position:relative; overflow:hidden;
+}
+#va-contact .contact-form .submit-btn::after{
+  content:""; position:absolute; inset:auto -40% 0 auto; width:40%; height:220%;
+  transform: translateX(-140%) rotate(18deg);
+  background: linear-gradient(90deg, rgba(255,255,255,.0), rgba(255,255,255,.55), rgba(255,255,255,.0));
+  transition: transform .45s ease; pointer-events:none;
+}
+#va-contact .contact-form .submit-btn:hover::after{ transform: translateX(160%) rotate(18deg) }
 
-#va-contact .submit-btn:hover {
-    background-color: #ffe066;
+@media (max-width: 720px){
+  #va-contact .contact-form{ grid-template-columns:1fr }
 }

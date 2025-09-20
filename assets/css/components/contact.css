@@ -1,96 +1,32 @@
-/* contact.css */
-
-.contacts-section {
-    /* Inalis ang background-color para maging transparent */
-    padding: 80px 20px;
-    border-top: 1px solid #222;
+/* ===== CONTACT ===== */
+.dcp-contacts-section{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08);
+}
+.dcp-contacts-container{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap:18px;
 }
 
-.contacts-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
+/* Form (left) */
+.dcp-contact-card{ padding:22px 20px }
+.dcp-form{ display:grid; gap:10px }
+.dcp-form label{ display:grid; gap:6px; color:#ededed }
+.dcp-form input,.dcp-form textarea{
+  background:#121212; border:1px solid rgba(255,255,255,.08); color:#ededed; border-radius:12px; padding:12px 14px; outline:none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.dcp-form input:focus,.dcp-form textarea:focus{
+  border-color:#ffd84d; box-shadow: 0 0 0 3px rgba(255,216,77,.22);
 }
 
-.contact-details {
-    flex: 1;
-    min-width: 300px;
-}
+/* Info + map (right) */
+.dcp-map-card{ padding:22px 20px; display:grid; gap:12px; align-content:start }
+.dcp-contact-list{ list-style:none; padding-left:0; margin:0; display:grid; gap:6px }
+.dcp-contact-list li{ color:#b8b8b8; display:flex; gap:10px; align-items:flex-start }
+.dcp-contact-list i{ color:#ffd84d; margin-top:2px }
+.dcp-map{ aspect-ratio:16/12; width:100%; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.08) }
+.dcp-map iframe{ width:100%; height:100%; border:0 }
 
-.contact-details p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
-    color: var(--secondary-text-color);
-}
-
-.contact-details ul {
-    list-style: none;
-    padding: 0;
-}
-
-.contact-details li {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 1.1em;
-}
-
-.contact-icon {
-    font-size: 1.5em;
-    color: var(--highlight-color);
-    margin-right: 15px;
-}
-
-.contact-details a {
-    color: var(--text-color);
-    transition: color 0.3s ease;
-}
-
-.contact-details a:hover {
-    color: var(--highlight-color);
-}
-
-.contact-form-container {
-    flex: 1;
-    min-width: 300px;
-}
-
-.form-title {
-    color: var(--highlight-color);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 15px;
-    border: 1px solid #444;
-    background-color: #222;
-    color: var(--text-color);
-    border-radius: 5px;
-    outline: none;
-    font-family: 'Poppins', sans-serif;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: var(--secondary-text-color);
-}
-
-.map-container {
-    margin-top: 50px;
-    width: 100%;
-    height: 400px;
-    background-color: #222;
-    border-radius: 8px;
+@media (max-width: 980px){
+  .dcp-contacts-container{ grid-template-columns:1fr }
 }

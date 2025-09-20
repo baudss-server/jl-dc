@@ -1,181 +1,167 @@
-/*
- * va-components.css
- * Styles specifically for the Virtual Assistant Services page
-*/
+/* =========================================================
+   VA Components (SCOPED to VA page only)
+   - Navbar polish (sticky, glass, gold highlights)
+   - Buttons/section helpers
+   ========================================================= */
 
-/* Style for the back arrow in the VA page navbar */
-.back-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    background: transparent;
-    border: none;
-    color: var(--highlight-color);
-    font-size: 1.5em; /* Mas malaking arrow */
-    transition: transform 0.3s ease, color 0.3s ease;
-    padding: 0;
+/* ============= VA NAVBAR (scoped to header.header) ============= */
+header.header{
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: linear-gradient(180deg, rgba(0,0,0,.92), rgba(0,0,0,.68));
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-.back-arrow:hover {
-    color: #fff; /* White sa hover */
-    transform: scale(1.1); /* Lumalaki nang kaunti sa hover */
+header.header nav{
+  width: min(1200px, 92vw);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
 }
 
-/* Siguraduhin na ang parent list item ay nakikita */
-.nav-links li.nav-back-button {
-    display: block !important;
+/* Brand / logo */
+header.header .logo a{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+header.header .logo .logo-image{
+  height: 38px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.45));
+  border-radius: 8px;
 }
 
-/* Para sa consistent na padding at margin ng bawat section */
-.page-section {
-    padding: 80px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+/* Links */
+header.header .nav-links{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-/* Para sa responsive na layout ng back arrow sa mobile */
-@media (max-width: 768px) {
-    .nav-links li.nav-back-button {
-        position: absolute;
-        right: 20px;
-        top: 15px;
-    }
+/* Base link pill */
+header.header .nav-links a{
+  color: #eaeaea;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: color .2s ease, background .2s ease, text-shadow .2s ease, border-color .2s ease, box-shadow .2s ease;
+  border: 1px solid transparent;
 }
 
-/* --- New styles for VA sections --- */
-
-.hero-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
+/* Hover: subtle gold */
+header.header .nav-links a:hover{
+  color: #ffd84d;
+  background: rgba(255,255,255,.05);
+  text-shadow: 0 0 8px rgba(255,216,77,.2);
+  border-color: rgba(255,255,255,.08);
 }
 
-.hero-title {
-    font-size: 4em;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 5px;
+/* ACTIVE (optional utility if you add a class="is-current" in HTML later) */
+header.header .nav-links a.is-current{
+  color: #000;
+  background: var(--gold-strong);
+  border-color: var(--gold-strong);
+  box-shadow: 0 0 14px rgba(255,216,77,.25);
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.5em;
-    font-weight: bold;
+/* "Back" button style (uses .btn .btn-primary in your HTML) */
+header.header .nav-links .nav-back-button .btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: .55rem .9rem;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid var(--gold-strong);
+  color: #000;
+  background: var(--gold-strong);
+  box-shadow: 0 0 0 rgba(255,216,77,0);
+}
+header.header .nav-links .nav-back-button .btn:hover{
+  filter: brightness(1.05);
+  box-shadow: 0 0 14px rgba(255,216,77,.22);
 }
 
-.text-gradient {
-    background: linear-gradient(to right, #ffffff, #ffd700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Icon in Back */
+header.header .nav-links .nav-back-button i{
+  font-size: 1.05rem;
+  line-height: 1;
 }
 
-/* Introduction Section - Our Virtual Assistance Services */
-#va-intro {
-    padding: 80px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+/* ====== Responsive behavior ====== */
+@media (max-width: 920px){
+  /* allow the nav links to wrap neatly into 2 rows */
+  header.header .nav-links{
+    flex-wrap: wrap;
+    gap: 10px 8px;
+    justify-content: flex-end;
+  }
+  /* make each pill slightly tighter on mobile */
+  header.header .nav-links a{
+    padding: 9px 11px;
+  }
 }
 
-#va-intro .pro-provider-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 40px;
+@media (max-width: 620px){
+  /* On small phones, group links into a soft card for readability */
+  header.header .nav-links{
+    background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 12px;
+    padding: 8px;
+  }
+  /* Keep left alignment (no center) per your preference */
+  header.header nav{
+    align-items: flex-start;
+  }
 }
 
-#va-intro .content-text {
-    flex: 1;
+/* Keyboard focus (accessibility) */
+header.header a:focus-visible{
+  outline: 2px solid rgba(255,216,77,.75);
+  outline-offset: 2px;
+  border-radius: 10px;
 }
 
-#va-intro .content-img {
-    flex: 1;
-    max-width: 50%;
+/* =========================================================
+   Buttons used inside VA sections and VA footer only
+   (kept from previous file, unchanged behavior)
+   ========================================================= */
+#va-hero .btn, #va-about .btn, #va-intro .btn, #va-services-list .btn, #va-contact .btn,
+footer.footer .btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.65rem 1rem; border-radius:12px; font-weight:600; text-decoration:none; cursor:pointer;
+  border:1px solid var(--gold-strong); color:#ededed; background:transparent;
+  box-shadow: 0 0 0 rgba(255,216,77,0);
+  transition: box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+#va-hero .btn:hover, #va-about .btn:hover, #va-intro .btn:hover, #va-services-list .btn:hover, #va-contact .btn:hover,
+footer.footer .btn:hover {
+  color:#000; background:var(--gold-strong); border-color:var(--gold-strong);
+  box-shadow: 0 0 16px rgba(255,216,77,.25);
 }
 
-#va-intro .content-img img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
+/* Section title spacing (scoped) */
+#va-hero .section-title,
+#va-about .section-title,
+#va-intro .section-title,
+#va-services-list .section-title,
+#va-contact .section-title { margin-bottom: 10px }
 
-.checkmark-list {
-    list-style: none;
-    padding: 0;
-}
-
-.checkmark-list li {
-    margin-bottom: 15px;
-    color: #f5f5f5;
-}
-
-/* Services List Section - What We Can Do */
-#va-services-list {
-    padding: 80px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-#va-services-list .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.service-card {
-    background-color: #1a1a1a;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    border: 2px solid #ffd700;
-}
-
-.service-card h3 {
-    color: #ffd700;
-    margin-bottom: 15px;
-}
-
-.service-card p {
-    color: #ccc;
-}
-
-.service-card .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    background-color: #ffd700;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-}
-
-.service-card .icon-wrapper i {
-    font-size: 1.8em;
-    color: #1a1a1a;
-}
-
-/* Responsive adjustments */
-@media (max-width: 992px) {
-    #va-intro .pro-provider-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    #va-intro .content-img {
-        max-width: 80%;
-    }
-}
+/* Minor text polishing inside VA (keeps main untouched) */
+#va-about p, #va-intro p, #va-services-list p, #va-contact p { font-size: 0.98rem }
